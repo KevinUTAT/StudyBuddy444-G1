@@ -6,3 +6,4 @@ The application is implimented using Ruby on Rails
 # Change log
 v 0.0.0 Nothing yet, still
 
+v 0.0.1 Added user sign up / authentication
