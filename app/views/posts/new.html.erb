@@ -1,0 +1,22 @@
+<h1>Create New Post</h1>
+
+<%= form_with scope: :post, url: posts_path, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :content %>
+  </p>
+
+  <p>
+    <%= form.label :number %><br>
+    <%= form.number_field :limit %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
