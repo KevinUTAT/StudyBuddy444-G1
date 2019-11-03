@@ -1,0 +1,13 @@
+<h1>Index</h1>
+<div id="posts">
+<% @posts.each do |post|%>
+    <div class="post">
+        <h2 class="title"><%= link_to post.title, post %></h2>
+        <h4><%= post.content %></h4>
+        <h4><%= post.limit %> </h4>
+        <p class="date"><%= time_ago_in_words(post.created_at)%> ago </p>
+        <p><%= post.user.email %></p>
+    </div>  
+<% end %>
+</div>
+

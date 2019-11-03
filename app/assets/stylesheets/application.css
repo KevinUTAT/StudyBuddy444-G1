@@ -13,3 +13,72 @@
  *= require_tree .
  *= require_self
  */
+
+
+ @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700i&display=swap');
+
+body{
+    font-family: 'Lato', sans-serif;
+    background-color: #EDEFF0;
+}
+
+.container{
+    width:60%;
+    max-width:1140px;
+    margin: 0 auto;
+}
+
+.main_header{
+    background-color:white;
+    width:100%;
+    /* max-width:1140px; */
+    margin: 0 auto;
+}
+
+.clearfix:before, .clearfix:after{
+    content: " ";
+    display:table;
+}
+
+.clearfix:after{
+    clear: both;
+}
+
+#logo{
+    display: inline-block;
+    font-weight:700;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+}
+
+.new_post{
+    float:right;
+}
+
+#posts{
+    background:white;
+    padding: 2em 5%;
+    border-radius: 0.5em;
+}
+
+.post{
+    margin: 1em 0;
+    padding: 1em 0;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+
+
+.title a{
+    margin:0;
+    color: #397CAC;
+    text-decoration: none;
+    font-weight:100;
+    font-size: 1.25rem;
+}
+
+.date{
+    margin-top:0.25rem;
+    font-size: 0.9rem;
+    color:#B2BAC2;
+}

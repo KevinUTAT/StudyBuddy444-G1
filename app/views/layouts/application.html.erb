@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SBG1</title>
+    <title>Buddy</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
-    <%= yield %>
+    
+    <header class="main_header clearfix">
+      <div class="container">
+        <p id="logo">studyBuddy</p>
+        <% if user_signed_in?%>
+          <button class="new_post"><a><%= link_to "New Post", new_post_path%></a></button>
+          <button class="new_post"><a><%= link_to "Log out", destroy_user_session_path, :method => :delete%></a></button>
+        <% else %>
+          <button ><a><%= link_to "Sign Up", new_user_registration_path%></a></button>
+          <button ><a><%= link_to "Sign In", new_user_session_path%></a></button>
 
-<p class="navbar-text float-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
-</p>
+        <% end %>
+      </div>
+    </header>
+    
+    <div class="container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
+<%# need to add normalize.css %>
