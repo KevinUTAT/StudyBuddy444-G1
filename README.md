@@ -25,3 +25,13 @@ v 1.0.1 Updated design for posts: allows users to see all posts and the user tha
 4. Create dashboard for users to view own sessions and notes
 
 5. Add system for payment of services between users 
+
+
+# Steps to follow after cloning
+
+1. brew services start postgresql
+2. yarn install
+3. rails db:migrate
+4. rails s
+
+  After your session you can run brew services stop Postgresql
