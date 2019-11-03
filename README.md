@@ -31,6 +31,7 @@ v 1.0.1 Updated design for posts: allows users to see all posts and the user tha
 
 1. brew services start postgresql
 2. yarn install
+3. (if first clone) rails db:create
 3. rails db:migrate
 4. rails s
 
