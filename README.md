@@ -26,6 +26,8 @@ v 1.0.1 Updated design for posts: allows users to see all posts and the user tha
 
 5. Add system for payment of services between users 
 
+6. Add Registration Page
+
 # Steps to follow after cloning
 
 1. brew services start postgresql
