@@ -2,6 +2,8 @@ class PostsController < ApplicationController
     before_action :find_post, only: [:show, :edit, :update, :destroy]
     # only signed in can create posts
     before_action :authenticate_user!, except: [:index, :show]
+    before_action :require_permission, only: [:edit, :update, :destroy]
+
 
     def index
        @posts = Post.all.order("created_at DESC")
@@ -53,6 +55,12 @@ class PostsController < ApplicationController
 
     def post_params
         params.require(:post).permit(:title, :content, :limit)
+    end
+    
+    def require_permission
+        if current_user != Post.find(params[:id]).user
+            redirect_to root_path
+        end
     end
 
 end
