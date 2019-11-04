@@ -1,1 +1,0 @@
-match '/help' => 'pages#help'

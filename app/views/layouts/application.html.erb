@@ -14,11 +14,10 @@
       <div class="container">
         <p id="logo">studyBuddy</p>
         <% if user_signed_in?%>
-          <button class="new_post"><a><%= link_to "About", pages#about%></a></button>
+          <button class="new_post"><a><%= link_to "About", controller: "pages", action: "about" %></a></button>
           <button class="new_post"><a><%= link_to "New Post", new_post_path%></a></button>
           <button class="new_post"><a><%= link_to "Log out", destroy_user_session_path, :method => :delete%></a></button>
         <% else %>
-          <button class="new_post"><a><%= link_to "About", pages#about%></a></button>
           <button ><a><%= link_to "Sign Up", new_user_registration_path%></a></button>
           <button ><a><%= link_to "Sign In", new_user_session_path%></a></button>
 

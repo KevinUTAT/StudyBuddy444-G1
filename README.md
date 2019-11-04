@@ -14,6 +14,8 @@ v 1.0.0 Added MVC for users to create new posts (pair programming - Charlie/Alir
 
 v 1.0.1 Updated design for posts: allows users to see all posts and the user that posted (pair programming - group)
 
+v 1.0.2 Add an about page (Ahmed)
+
 # To Do
 
 1. Add functionality for users to add resources to posts
