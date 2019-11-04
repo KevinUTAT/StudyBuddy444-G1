@@ -4,10 +4,9 @@ class User < ApplicationRecord
   # has_many :posts
   # has_many :post_members, :through => :posts
 
-  
   has_many :posts
+
+
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable
-
-
+         :recoverable, :rememberable, :validatable
 end
