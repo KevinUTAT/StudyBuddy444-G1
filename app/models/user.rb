@@ -5,7 +5,7 @@ class User < ApplicationRecord
   # has_many :post_members, :through => :posts
 
   has_many :posts
-
+  has_many :notes
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

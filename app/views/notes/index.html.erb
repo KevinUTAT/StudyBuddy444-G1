@@ -1,10 +1,13 @@
-<h1>Index</h1>
+<h1>
+Notes
+<button class="new_post"><a><%= link_to "New Note", new_note_path%></a></button>
+</h1>
 <div id="posts">
 <% @notes.each do |note|%>
     <div class="post">
         <h2 class="title"><%= link_to note.title, note %></h2>
-        <h4><%= note.content %></h4>
-        <h4><%= note.limit %> </h4>
+        <h4><%= note.course %></h4>
+        <h4><%= note.content %> </h4>
         <p class="date"><%= time_ago_in_words(note.created_at)%> ago </p>
         <p><%= note.user.email %></p>
     </div>  

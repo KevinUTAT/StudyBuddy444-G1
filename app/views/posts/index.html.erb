@@ -1,4 +1,7 @@
-<h1>Index</h1>
+<h1>
+Posts
+<button class="new_post"><a><%= link_to "New Post", new_post_path%></a></button>
+</h1>
 <div id="posts">
 <% @posts.each do |post|%>
     <div class="post">
