@@ -30,6 +30,7 @@ class PostsController < ApplicationController
     end
 
     def edit
+        @notes = Note.all.collect {|note| [ note.title, note.id ] }
     end
 
     def update

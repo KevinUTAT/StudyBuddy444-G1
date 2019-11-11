@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2019_11_11_183444) do
   enable_extension "plpgsql"
 
   create_table "notes", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "title"
     t.string "course"
     t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
   end
 
