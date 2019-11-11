@@ -2,13 +2,12 @@
 
 <%= form_with scope: :note, url: notes_path, local: true do |form| %>
   <p>
+    <%= form.label :course %><br>
+    <%= form.text_field :course %>
+  <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
   </p>
- 
-  <p>
-    <%= form.label :course %><br>
-    <%= form.text_field :course %>
 </p>
 
   <p>
