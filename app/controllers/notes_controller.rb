@@ -35,6 +35,7 @@ class NotesController < ApplicationController
     end
     
     def edit
+        @note = find_note
     end
     
     def update

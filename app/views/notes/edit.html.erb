@@ -1,6 +1,6 @@
 <h1>Edit Note</h1>
 
-<%= form_with scope: :note, url: notes_path, local: true do |form| %>
+<%= form_with model: @note, local: true do |form| %>
   <p>
     <%= form.label :course %><br>
     <%= form.text_field :course %>
