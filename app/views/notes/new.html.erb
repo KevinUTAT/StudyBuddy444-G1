@@ -1,0 +1,22 @@
+<h1>Create New Note</h1>
+
+<%= form_with scope: :note, url: notes_path, local: true do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :course %><br>
+    <%= form.text_field :course %>
+</p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :content %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
