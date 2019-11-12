@@ -30,7 +30,6 @@ class PostsController < ApplicationController
     end
 
     def edit
-        @post = find_post
         @notes = Note.all.collect {|note| [ note.title, note.id ] }
     end
 
