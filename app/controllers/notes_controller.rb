@@ -8,9 +8,9 @@ class NotesController < ApplicationController
     def index
         #@notes = Note.search(params[:search]).order("course ASC, title DESC")
         if Note.search(params[:search])
-            @notes = Note.search(params[:search]).order("course ASC, title DESC")
+            @notes = Note.search(params[:search]).order("created_at DESC")
         else
-            @notes = Note.order("course ASC, title DESC")
+            @notes = Note.order("created_at DESC")
         end
     end
     
@@ -60,7 +60,7 @@ class NotesController < ApplicationController
     
     
     def note_params
-        params.require(:note).permit(:title, :course, :content, :search)
+        params.require(:note).permit(:title, :course, :content, :attachments, :search)
     end
     
     def require_permission

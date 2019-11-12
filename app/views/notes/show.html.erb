@@ -1,6 +1,12 @@
 <h1><%= @note.course %></h1>
-<h1><%= @note.title %></h1>
-<h1><%= @note.content %></h1>
+<h2><%= @note.title %></h2>
+<h4><%= @note.content %></h4>
+
+<% @note.attachments.blobs.each do |document| %>
+<p>
+    <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
+</p>
+<% end %>
 
 <%= link_to 'edit', edit_note_path(@note)%>
 <%= link_to 'delete', note_path(@note), method: :delete, data: {confirm: "are you sure you want to delete this?"}%>

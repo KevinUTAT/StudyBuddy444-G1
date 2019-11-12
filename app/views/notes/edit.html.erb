@@ -16,6 +16,10 @@
     <%= form.text_area :content %>
   </p>
 
+  <p>
+    <%= form.label :attachments %><br>
+    <%= form.file_field :attachments %>
+  </p>
 
  
   <p>
@@ -23,4 +27,6 @@
   </p>
 <% end %>
 
-<%= link_to "notes" , notes_path%>
+<p>
+    <%= link_to 'Back', :back %>
+</p>

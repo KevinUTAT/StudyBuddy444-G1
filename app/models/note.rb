@@ -1,7 +1,7 @@
 class Note < ApplicationRecord
     belongs_to :user
-    # belongs_to :user
-    # belongs_to :post_member
+    
+    has_many_attached :attachments
     
     def self.search(search)
         if search
