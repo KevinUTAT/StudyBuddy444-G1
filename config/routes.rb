@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'note/index'
     devise_for :users
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
     resources :posts
@@ -7,4 +6,7 @@ Rails.application.routes.draw do
     root 'posts#index'
     
     resources :notes
+    get 'note/index'
+    get 'like' => 'notes#like'
+    get 'unlike' => 'notes#unlike'
 end

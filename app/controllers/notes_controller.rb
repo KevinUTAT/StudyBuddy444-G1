@@ -51,6 +51,27 @@ class NotesController < ApplicationController
         redirect_to notes_url
     end
     
+    #voting system
+    def like
+        @note = Note.find(params[:id])
+        @note.liked_by current_user
+        if @note.vote_registered? == true
+            flash[:notice] = "Successfully liked this note."
+        else
+            flash[:notice] = "You have already liked this note."
+        end
+        redirect_to notes_url
+    end
+    def unlike
+        @note = Note.find(params[:id])
+        @note.unliked_by current_user
+        if @note.vote_registered? == false
+            flash[:notice] = "Successfully unliked this note."
+        else
+            flash[:notice] = "You cannot unlike this note."
+        end
+        redirect_to notes_url
+    end
     
     private
     
