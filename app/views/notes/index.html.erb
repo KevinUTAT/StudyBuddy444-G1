@@ -1,0 +1,35 @@
+<h1>
+Notes
+<button class="new_post"><a><%= link_to "New Note", new_note_path%></a></button>
+</h1>
+
+<h3>Search by course:</h3>
+<%= form_tag(notes_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag ("Search") %>
+
+    <div id="posts">
+        <% @notes.each do |note|%>
+        <h2><%= note.course %></h2>
+        <div class="post">
+            <h2 class="title"><%= link_to note.title, note %></h2>
+            <h4><%= note.content %> </h4>
+
+            <% note.attachments.blobs.each do |document| %>
+            <p>
+                <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
+            </p>
+            <% end %>
+
+            <p class="date"><%= time_ago_in_words(note.created_at)%> ago </p>
+            <p><%= note.user.email %></p>
+
+            <p>Likes: <%= note.get_upvotes.size() %></p>
+            <p>
+            <%= link_to "like", controller: "notes", action: "like", id: note.id %>
+            <%= link_to "unlike", controller: "notes", action: "unlike", id: note.id %>
+            </p>
+        </div>
+        <% end %>
+    </div>
+<% end %>

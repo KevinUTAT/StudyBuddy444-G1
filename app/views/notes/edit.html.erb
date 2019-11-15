@@ -1,0 +1,32 @@
+<h1>Edit Note</h1>
+
+<%= form_with model: @note, local: true do |form| %>
+  <p>
+    <%= form.label :course %><br>
+    <%= form.text_field :course %>
+  </p>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :content %>
+  </p>
+
+  <p>
+    <%= form.label :attachments %><br>
+    <%= form.file_field :attachments %>
+  </p>
+
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<p>
+    <%= link_to 'Back', :back %>
+</p>
