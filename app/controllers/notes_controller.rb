@@ -60,7 +60,7 @@ class NotesController < ApplicationController
         else
             flash[:notice] = "You have already liked this note."
         end
-        redirect_to notes_url
+        redirect_back(fallback_location: root_path)
     end
     def unlike
         @note = Note.find(params[:id])
@@ -70,7 +70,7 @@ class NotesController < ApplicationController
         else
             flash[:notice] = "You cannot unlike this note."
         end
-        redirect_to notes_url
+        redirect_back(fallback_location: root_path)
     end
     
     private
