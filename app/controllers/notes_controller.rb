@@ -50,7 +50,7 @@ class NotesController < ApplicationController
         @note.destroy
         redirect_to notes_url
     end
-    
+
     #voting system
     def like
         @note = Note.find(params[:id])
@@ -81,7 +81,7 @@ class NotesController < ApplicationController
     
     
     def note_params
-        params.require(:note).permit(:title, :course, :content, :attachments, :search)
+        params.require(:note).permit(:title, :course, :content, :search, attachments: [])
     end
     
     def require_permission
