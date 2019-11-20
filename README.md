@@ -38,4 +38,12 @@ v 1.0.2 Add an about page (Ahmed)
 3. rails db:migrate
 4. rails s
 
-  After your session you can run brew services stop Postgresql
+  After your session you can run brew services stop Postgresql.
+  
+# How to Test payment
+When the Paypla login page showed up, sign in with the following account: \
+account: student_dev@studybuddy.ca \
+password: 12345678 \
+this account don't use real money, so go wild 
+
+

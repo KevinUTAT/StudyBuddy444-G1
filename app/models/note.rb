@@ -7,7 +7,11 @@ class Note < ApplicationRecord
     
     def self.search(search)
         if search
-            self.where(course: search)
+            if search == ""
+                self.all
+            else
+                self.where(course: search)
+            end
         else
             self.all
         end

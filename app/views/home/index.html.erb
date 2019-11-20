@@ -1,0 +1,9 @@
+<h1>Welcome to StudyBuddy</h1>
+
+<p>This is the landing page, with info about the service and links to the various static pages required by the project.</p>
+
+<p>If you are signed in you will see a button that will take you to your dashboard, 
+otherwise there will be no button</p>
+<% if user_signed_in?%>
+    <button><a><%= link_to "Dashboard", dashboard_index_path%></a></button>
+<% end %>

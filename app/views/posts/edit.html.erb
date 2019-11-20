@@ -1,6 +1,9 @@
 <h1>Edit Post</h1>
 
-<%= form_with scope: :post, url: posts_path, local: true do |form| %>
+<%= form_for(@post, url: {action: 'update', id: @post.id}) do |form| %>
+  <p>
+    <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose A Category"} %>
+  </p>
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
@@ -15,12 +18,6 @@
     <%= form.label :number %><br>
     <%= form.number_field :limit %>
   </p> 
-
-  <p>
-    <%= form.label "Attach Notes" %><br>
-    <%= form.select(:note_ids, @notes, {:prompt => "Select Notes"}, {:multiple => true})%>
-  </p>
-
   <p>
     <%= form.submit %>
   </p>
