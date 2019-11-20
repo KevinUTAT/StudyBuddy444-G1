@@ -15,6 +15,9 @@
 # gem 'pg'
 #
 default: &default
+  host: localhost
+  username: super_user
+  password: 09024
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
@@ -80,6 +83,7 @@ test:
 #
 production:
   <<: *default
+  #host: localhost
   database: StudyBuddyG1_production
   username: StudyBuddyG1
   password: <%= ENV['STUDYBUDDYG1_DATABASE_PASSWORD'] %>

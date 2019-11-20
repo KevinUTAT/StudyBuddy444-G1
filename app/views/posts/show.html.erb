@@ -5,3 +5,26 @@
 <%= link_to 'edit', edit_post_path(@post)%>
 <%= link_to 'delete', post_path(@post), method: :delete, data: {confirm: "are you sure you want to delte this?"}%>
 <%= link_to "home", root_path %>
+
+<p>Below is for Paypal testting</p>    
+
+<body>
+  <script
+    src="https://www.paypal.com/sdk/js?client-id=AR4bc1-7vGLLOMOyeoxKSx6v3qR0-dFTZxwAGoGI8Jh9mtw-f3hYe6FZNcKsrAuUGHV63r6zyjw5JXw3">
+  </script>
+
+  <div id="paypal-button-container"></div>
+
+  <script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '6.9'
+          }
+        }]
+      });
+    }
+  }).render('#paypal-button-container');
+  </script>
