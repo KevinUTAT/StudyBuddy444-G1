@@ -42,8 +42,8 @@
                </form>
                <button class="btn my-2 my-sm-0"><a><%= link_to "Log out", destroy_user_session_path, :method => :delete%></a></button>
                <% else %>
-               <button ><a><%= link_to "Sign Up", new_user_registration_path%></a></button>
-               <button ><a><%= link_to "Sign In", new_user_session_path%></a></button>
+                  <button class="btn btn-outline-success my-2 my-sm-0"><a><%= link_to "Sign Up", new_user_registration_path%></a></button>
+                  <button class="btn btn-outline-success my-2 my-sm-0"><a><%= link_to "Sign In", new_user_session_path%></a></button>
                <% end %>
             </ul>
          </div>
