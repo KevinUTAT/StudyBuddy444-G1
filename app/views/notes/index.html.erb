@@ -8,11 +8,12 @@ Notes
     <%= text_field_tag(:search, params[:search]) %>
     <%= submit_tag ("Search") %>
 
-    <p>
-    <th><%= togglesort "title" %></th>
-    <th><%= togglesort "course" %></th>
-    <th><%= togglesort "created_at" %></th>
-    </p>
+<h3>Sort by:</h3>
+<p>
+    <th><%= togglesort "title", "Title" %></th>
+    <th><%= togglesort "course", "Course" %></th>
+    <th><%= togglesort "created_at", "Created" %></th>
+</p>
 
     <div id="posts">
         <% @notes.each do |note|%>
