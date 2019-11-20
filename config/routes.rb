@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'groups/index'
+  get 'groups/show'
+  get 'groups/new'
+  get 'groups/edit'
   get 'dashboard/index'
     get 'home/index'
     devise_for :users
