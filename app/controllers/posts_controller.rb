@@ -47,6 +47,8 @@ class PostsController < ApplicationController
     end
 
 
+
+
     private
 
     def find_post
@@ -65,3 +67,4 @@ class PostsController < ApplicationController
     end
 
 end
+
