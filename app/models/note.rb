@@ -3,6 +3,8 @@ class Note < ApplicationRecord
     
     has_many_attached :attachments
     
+    acts_as_votable
+    
     def self.search(search)
         if search
             self.where(course: search)

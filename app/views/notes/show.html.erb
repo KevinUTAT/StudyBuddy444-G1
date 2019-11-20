@@ -8,6 +8,12 @@
 </p>
 <% end %>
 
+<p>Likes: <%= @note.get_upvotes.size() %></p>
+<p>
+<%= link_to "like", controller: "notes", action: "like", id: @note.id %>
+<%= link_to "unlike", controller: "notes", action: "unlike", id: @note.id %>
+</p>
+
 <%= link_to 'edit', edit_note_path(@note)%>
 <%= link_to 'delete', note_path(@note), method: :delete, data: {confirm: "are you sure you want to delete this?"}%>
 <%= link_to "home", notes_url %>
