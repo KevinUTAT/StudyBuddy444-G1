@@ -38,4 +38,4 @@ v 1.0.2 Add an about page (Ahmed)
 3. rails db:migrate
 4. rails s
 
-  After your session you can run brew services stop Postgresql
+  After your session you can run brew services stop Postgresql.
