@@ -2,6 +2,9 @@
 
 <%= form_with scope: :post, url: posts_path, local: true do |form| %>
   <p>
+    <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose A Category"} %>
+  </p>
+  <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
   </p>

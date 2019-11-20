@@ -3,5 +3,5 @@
 <h1><%= @post.limit %></h1>
 
 <%= link_to 'edit', edit_post_path(@post)%>
-<%= link_to 'delete', post_path(@post), method: :delete, data: {confirm: "are you sure you want to delte this?"}%>
+<%= link_to 'delete', post_path(@post), method: :delete, data: {confirm: "are you sure you want to delte this?"} %>
 <%= link_to "home", root_path %>

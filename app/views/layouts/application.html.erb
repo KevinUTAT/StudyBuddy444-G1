@@ -14,6 +14,9 @@
       <div class="container">
         <p id="logo">studyBuddy</p>
         <% if user_signed_in?%>
+          <% Category.all.each do |category| %>
+            <%= link_to category.name, posts_path(category: category.name) %>
+          <% end %>
           <button class="new_post"><a><%= link_to "About", controller: "pages", action: "about" %></a></button>
           <button class="new_post"><a><%= link_to "Posts", posts_url%></a></button>
           <button class="new_post"><a><%= link_to "Notes", notes_url%></a></button>
