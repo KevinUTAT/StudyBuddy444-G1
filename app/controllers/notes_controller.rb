@@ -6,11 +6,13 @@ class NotesController < ApplicationController
     
     
     def index
-        #@notes = Note.search(params[:search]).order("course ASC, title DESC")
+        sort_order = sort_column + " " + sort_direction
+        
         if Note.search(params[:search])
-            @notes = Note.search(params[:search]).order("created_at DESC")
+            #@notes = Note.search(params[:search]).order("created_at DESC")
+            @notes = Note.search(params[:search]).order(sort_order)
         else
-            @notes = Note.order("created_at DESC")
+            @notes = Note.order(sort_order)
         end
     end
     
@@ -72,6 +74,7 @@ class NotesController < ApplicationController
         end
         redirect_back(fallback_location: root_path)
     end
+
     
     private
     
@@ -88,5 +91,13 @@ class NotesController < ApplicationController
         if current_user != Note.find(params[:id]).user
             redirect_to notes_url
         end
+    end
+    
+    def sort_column
+        params[:sort] || "created_at"
+    end
+    
+    def sort_direction
+        params[:direction] || "desc"
     end
 end
