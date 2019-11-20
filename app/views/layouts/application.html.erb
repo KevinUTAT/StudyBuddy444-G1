@@ -1,38 +1,63 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Buddy</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    
-    <header class="main_header clearfix">
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <title>Buddy</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <a class="navbar-brand" href="#">studyBuddy</a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Courses
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item" href="#">Action</a>
+                     <a class="dropdown-item" href="#">Another action</a>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+               </li>
+               <% if user_signed_in?%>
+               <button class="btn my-2 my-sm-0"><a><%= link_to "Notes", notes_url%></a></button>
+               <button class="btn my-2 my-sm-0"><a><%= link_to "Posts", posts_url%></a></button>
+               <button class="btn my-2 my-sm-0"><a><%= link_to "About", controller: "pages", action: "about" %></a></button>
+               <form class="form-inline my-2 my-lg-0" >
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+               </form>
+               <button class="btn my-2 my-sm-0"><a><%= link_to "Log out", destroy_user_session_path, :method => :delete%></a></button>
+               <% else %>
+               <button ><a><%= link_to "Sign Up", new_user_registration_path%></a></button>
+               <button ><a><%= link_to "Sign In", new_user_session_path%></a></button>
+               <% end %>
+            </ul>
+         </div>
+      </nav>
       <div class="container">
-        <p id="logo">studyBuddy</p>
-        <% if user_signed_in?%>
-          <button class="new_post"><a><%= link_to "About", controller: "pages", action: "about" %></a></button>
-          <button class="new_post"><a><%= link_to "Posts", posts_url%></a></button>
-          <button class="new_post"><a><%= link_to "Notes", notes_url%></a></button>
-          <button class="new_post"><a><%= link_to "Log out", destroy_user_session_path, :method => :delete%></a></button>
-        <% else %>
-          <button ><a><%= link_to "Sign Up", new_user_registration_path%></a></button>
-          <button ><a><%= link_to "Sign In", new_user_session_path%></a></button>
-
-        <% end %>
+         <p class="notice"><%= notice %></p>
+         <p class="alert"><%= alert %></p>
       </div>
-    </header>
-    
-    <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
-    <div class="container">
-      <%= yield %>
-    </div>
-  </body>
+      <div class="container">
+         <%= yield %>
+      </div>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   </body>
 </html>
-<%# need to add normalize.css %>
