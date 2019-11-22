@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_192753) do
+ActiveRecord::Schema.define(version: 2019_11_22_151951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 2019_11_20_192753) do
     t.integer "user_id"
   end
 
+  create_table "post_applications", force: :cascade do |t|
+    t.string "applicant_username"
+    t.bigint "post_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_applications_on_post_id"
+    t.index ["user_id"], name: "index_post_applications_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -109,4 +119,6 @@ ActiveRecord::Schema.define(version: 2019_11_20_192753) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "post_applications", "posts"
+  add_foreign_key "post_applications", "users"
 end
