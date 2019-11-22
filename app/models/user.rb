@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :notes
+  has_many :groups
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

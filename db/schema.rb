@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_191349) do
     t.integer "capacity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "members", force: :cascade do |t|
