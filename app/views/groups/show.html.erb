@@ -1,2 +1,47 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @group.category %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @group.description %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @group.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @group.end_time %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @group.location %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @group.capacity %>
+</p>
+
+<p>
+  <strong>Study Group Members:</strong>
+  <% @members.each do |member| %>
+    <% if member.group_id == @group.id %>
+      <p><%= @users.find(member.user_id).name%></p>
+    <% end %>
+  <% end %>
+</p>
+
+<% if (!Member.exists?(user_id: current_user.id)) %>
+  <%= button_to "Join", {:action => "join", :group_id => @group.id}, :method => :post %>
+<% end %>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', dashboard_index_path %>
