@@ -1,4 +1,7 @@
 class Note < ApplicationRecord
+    validates :title, presence: true
+    validates :course, presence: true, :case_sensitive => false
+    
     belongs_to :user
     
     has_many_attached :attachments
@@ -10,7 +13,7 @@ class Note < ApplicationRecord
             if search == ""
                 self.all
             else
-                self.where(course: search)
+                self.where("lower(course) = ?", search.downcase)
             end
         else
             self.all
