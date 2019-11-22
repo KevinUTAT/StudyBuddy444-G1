@@ -38,7 +38,10 @@
                   Settings
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "Edit Profile", edit_user_registration_path(current_user)%></a></button>
+                  <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "My Profile", new_user_profile_path%></a></button>
+                  <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "My Account", edit_user_registration_path(current_user)%></a></button>
+                     
+                     
                      <div class="dropdown-divider"></div>
                      <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "Log out", destroy_user_session_path, :method => :delete%></a></button>
                   </div>
