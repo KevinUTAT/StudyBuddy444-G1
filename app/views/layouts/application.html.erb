@@ -21,6 +21,7 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                <% if user_signed_in?%>
+               <%# categories for services %>
                <% Category.all.each do |category| %>
                   <button class="btn my-2 my-sm-0"><a><%= link_to category.name, posts_path(category: category.name) %></a></button>
               <% end %>
