@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   
   
     def index
-       redirect_to :dashboard_index_path
+       redirect_to :dashboard_index
     end
   
     def show
