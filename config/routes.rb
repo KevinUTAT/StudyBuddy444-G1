@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     resources :posts
     root 'home#index'
     
-    resources :user_profiles
+    resource :profiles
+
     resources :notes
     get 'note/index'
     get 'like' => 'notes#like'

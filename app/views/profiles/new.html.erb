@@ -1,6 +1,6 @@
 <h2>Create Profile</h2>
 
-<%= form_with scope: :user_profile, url: user_profiles_path, local: true do |form| %>
+<%= form_with scope: :profile, url: profiles_path, local: true do |form| %>
   <div class="field">
   <%= form.label :name %><br />
   <%= form.text_field :name, autofocus: true %>
@@ -18,7 +18,7 @@
 
 
 <p>
-  <%= form.submit "Save Profile" %>
+  <%= form.submit %>
 </p>
 
 <% end %>
