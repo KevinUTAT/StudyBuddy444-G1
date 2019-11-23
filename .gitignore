@@ -4,6 +4,9 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# ignore my self :)
+.gitignore
+
 # Ignore bundler config.
 /.bundle
 
@@ -32,3 +35,5 @@ yarn-debug.log*
 
 # Ignore database.yml witch is windows only
 config/database.yml
+config/database.yml
+/config/database.yml

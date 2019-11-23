@@ -1,0 +1,30 @@
+<h1>Check Out<h>
+
+<h2>$6.9<h2>
+<h3>To tutor xxx<h3>
+
+<body>
+  <script
+    src="https://www.paypal.com/sdk/js?client-id=AR4bc1-7vGLLOMOyeoxKSx6v3qR0-dFTZxwAGoGI8Jh9mtw-f3hYe6FZNcKsrAuUGHV63r6zyjw5JXw3">
+  </script>
+
+  <div id="paypal-button-container"></div>
+
+  <script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '6.9'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+    }
+  }).render('#paypal-button-container');
+  </script>

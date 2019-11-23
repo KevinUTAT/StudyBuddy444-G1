@@ -3,5 +3,9 @@ class DashboardController < ApplicationController
   def index
     @groups = Group.all
     @notes = Note.all
+   end
+
+
+  def checkout
   end
 end
