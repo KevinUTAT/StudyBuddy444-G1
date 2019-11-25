@@ -1,0 +1,24 @@
+<h2>Create Profile</h2>
+
+<%= form_with scope: :profile, url: profiles_path, local: true do |form| %>
+  <div class="field">
+  <%= form.label :name %><br />
+  <%= form.text_field :name, autofocus: true %>
+  </div>
+  
+  <div class="field">
+  <%= form.label :about_me %><br>
+  <%= form.text_area :about_me %>
+</p>
+
+<p>
+  <%= form.label :attachments %><br>
+  <%= form.file_field :attachments, multiple: true %>
+</p>
+
+
+<p>
+  <%= form.submit %>
+</p>
+
+<% end %>

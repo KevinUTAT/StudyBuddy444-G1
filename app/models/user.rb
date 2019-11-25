@@ -6,6 +6,11 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :notes
+  has_many :groups
+  has_one :profile, dependent: :destroy
+  
+  # before_create :build_profile
+  # accepts_nested_attributes_for :profile
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
