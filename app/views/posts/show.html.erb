@@ -10,7 +10,7 @@
     <% @apps.order("created_at DESC").each do |app| %>
       <li>
         <%= app.user.email %>
-        <button href="">kevin add your link in showw.html</button>
+        <button href="">Accept (kevin)</button>
       </li>
       <br>
     <% end %>
@@ -35,3 +35,26 @@
 <% end %>
 
 <%= link_to "home", root_path %>
+
+<p>Below is for Paypal testting</p>    
+
+<body>
+  <script
+    src="https://www.paypal.com/sdk/js?client-id=AR4bc1-7vGLLOMOyeoxKSx6v3qR0-dFTZxwAGoGI8Jh9mtw-f3hYe6FZNcKsrAuUGHV63r6zyjw5JXw3">
+  </script>
+
+  <div id="paypal-button-container"></div>
+
+  <script>
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '6.9'
+          }
+        }]
+      });
+    }
+  }).render('#paypal-button-container');
+</script>
