@@ -16,6 +16,14 @@ class PostsController < ApplicationController
 
     def show
         @post = Post.find(params[:id])
+        # data for paypal
+        
+        @user = @post.user
+        # @user_id = @user.id
+        # @user.name  is the name
+        #for now take an arbritary price like 10$
+        
+
     end
 
     def new
