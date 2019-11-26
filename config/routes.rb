@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :pages
     resources :groups do
         collection do
             post 'join'
