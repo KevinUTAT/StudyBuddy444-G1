@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :notes
   has_many :groups
   has_one :profile, dependent: :destroy
+  has_one :page, dependent: :destroy
+
   
   # before_create :build_profile
   # accepts_nested_attributes_for :profile
