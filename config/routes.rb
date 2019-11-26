@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   
-    match '/users',   to: 'users#index',   via: 'get'
-    match '/users/:id',     to: 'users#show',       via: 'get'
-
     resources :groups do
         collection do
             post 'join'
