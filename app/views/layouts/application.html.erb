@@ -39,8 +39,12 @@
                   Settings
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "Create Profile",  new_page_path%></a></button>
-                
+                  
+                  <%if current_user.page == nil %>
+                     <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "Create Profile",  new_page_path%></a></button>
+                  <%else %>
+                     <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "View Profile",  current_user.page%></a></button>
+                  <%end%>
                   <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "My Account", edit_user_registration_path(current_user)%></a></button>
                      
                      
