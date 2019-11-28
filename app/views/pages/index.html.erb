@@ -13,6 +13,7 @@
 
   <tbody>
     <% @pages.each do |page| %>
+      <%next if current_user.id == page.user_id %>
       <tr>
         <td><%= page.name %></td>
         <td><%= page.about_me %></td>
