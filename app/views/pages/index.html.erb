@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pages</h1>
+<h1>Profiles</h1>
 
 <table>
   <thead>
@@ -17,8 +17,8 @@
         <td><%= page.name %></td>
         <td><%= page.about_me %></td>
         <td><%= link_to 'Show', page %></td>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
-        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%# link_to 'Edit', edit_page_path(page) %></td>
+        <td><%#link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Page', new_page_path %>
+<%# link_to 'New Page', new_page_path %>

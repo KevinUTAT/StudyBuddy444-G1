@@ -21,6 +21,11 @@
     <%= form.text_area :about_me %>
   </div>
 
+  <div class="field">
+      <%= form.label "Attatch Resume" %><br>
+      <%= form.file_field :attachments, multiple: true %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
