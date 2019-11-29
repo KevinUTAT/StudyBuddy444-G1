@@ -61,6 +61,12 @@ class PagesController < ApplicationController
     end
   end
 
+  def delete_resume
+    @page = Page.find(params[:id])
+    @page.resume.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page
@@ -69,6 +75,6 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:name, :about_me, attachments: [])
+      params.require(:page).permit(:name, :about_me, :resume, attachments: [])
     end
 end

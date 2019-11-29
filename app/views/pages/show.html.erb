@@ -1,23 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @page.name %>
+   <strong>Name:</strong>
+   <%= @page.name %>
 </p>
 
 <p>
-  <strong>About me:</strong>
-  <%= @page.about_me %>
+   <strong>About me:</strong>
+   <%= @page.about_me %>
+</p>
+
+<p>
+  <strong>Resume:</strong>
+   <% if @page.resume.attached? %>
+      <%= link_to @page.resume.filename, rails_blob_path(@page.resume, disposition: 'preview') %>
+   <%end%>
 </p>
 
 <% @page.attachments.blobs.each do |document| %>
   <p>
-      <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
+    <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
   </p>
-  <% end %>
+<% end %>
 
-  <%if current_user.id == @page.user_id %>
-    <%=link_to 'Edit', edit_page_path(@page) %> 
-  <%end%>
-  
+<%if current_user.id == @page.user_id %>
+  <%=link_to 'Edit', edit_page_path(@page) %> 
+<%end%>
+
 <%# link_to 'Back', pages_path %>

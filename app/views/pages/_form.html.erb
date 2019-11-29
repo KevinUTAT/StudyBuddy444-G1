@@ -21,8 +21,26 @@
     <%= form.text_area :about_me %>
   </div>
 
+  <p>
+    <% if @page.resume.attached? %>
+        <%= form.label "Resume" %>
+        <%= link_to @page.resume.filename, rails_blob_path(@page.resume, disposition: 'preview') %>
+        <%= link_to "Remove", controller: "pages", action: "delete_resume", id: @page.id %>
+
+    <%else%>
+        <%= form.label "Upload Resume" %>
+        <%= form.file_field :resume %>
+    <%end%> 
+  </p>
+
+  <% page.attachments.blobs.each do |document| %>
+    <p>
+        <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
+    </p>
+    <% end %>
+
   <div class="field">
-      <%= form.label "Attatch Resume" %><br>
+      <%= form.label "Attach Other files" %><br>
       <%= form.file_field :attachments, multiple: true %>
     </div>
 
