@@ -27,3 +27,15 @@ User.all.each do |user|
         #avatar: Faker::Avatar.image
     )
 end
+
+100.times do
+    Group.create!(
+        category: ["ECE444", "CSC411", "ECO250", "SPA100", "PHY294"].sample,
+        description: ["Studying for midterm","Working on assignment 1","Finishing project","Writing lab report","Studying for the final","Problem set 4"].sample,
+        start_time: ["2019-11-29 20:31:00"].sample,
+        end_time: ["2019-11-29 21:31:00"].sample,
+        location: ["Bahen","Sanford Fleming","Galbraith","Victoria College"].sample,
+        capacity: [1,2,3,4,0].sample,
+        user_id: [*1..100].sample
+    )
+end
