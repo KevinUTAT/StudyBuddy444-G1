@@ -4,8 +4,8 @@ class GroupsController < ApplicationController
     before_action :require_permission, only: [:edit, :update, :destroy]
   
   
-    def index
-       redirect_to :dashboard_index
+    def index        
+        @groups = Group.all
     end
   
     def show
@@ -32,9 +32,11 @@ class GroupsController < ApplicationController
   
     def edit
         @groups = Group.all.collect {|group| [ group.id ] }
+        @group = Group.find(params[:id])
     end
   
     def update
+        @group = Group.find(params[:id])
         if @group.update(group_params)
             redirect_to @group
         else
@@ -43,8 +45,9 @@ class GroupsController < ApplicationController
     end
   
     def destroy
+        @group = Group.find(params[:id])
         @group.destroy
-        redirect_to root_path
+        redirect_to dashboard_index_path
     end
   
     # def join
