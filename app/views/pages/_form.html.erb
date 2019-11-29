@@ -26,23 +26,22 @@
         <%= form.label "Resume" %>
         <%= link_to @page.resume.filename, rails_blob_path(@page.resume, disposition: 'preview') %>
         <%= link_to "Remove", controller: "pages", action: "delete_resume", id: @page.id %>
-
     <%else%>
         <%= form.label "Upload Resume" %>
         <%= form.file_field :resume %>
     <%end%> 
   </p>
 
-  <% page.attachments.blobs.each do |document| %>
-    <p>
-        <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
-    </p>
-    <% end %>
-
-  <div class="field">
-      <%= form.label "Attach Other files" %><br>
-      <%= form.file_field :attachments, multiple: true %>
-    </div>
+  <p>
+    <% if @page.transcript.attached? %>
+        <%= form.label "Transcript" %>
+        <%= link_to @page.transcript.filename, rails_blob_path(@page.transcript, disposition: 'preview') %>
+        <%= link_to "Remove", controller: "pages", action: "delete_transcript", id: @page.id %>
+    <%else%>
+        <%= form.label "Upload Transcript" %>
+        <%= form.file_field :transcript %>
+    <%end%> 
+  </p>
 
   <div class="actions">
     <%= form.submit %>

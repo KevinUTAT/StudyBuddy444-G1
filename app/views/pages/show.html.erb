@@ -17,11 +17,12 @@
    <%end%>
 </p>
 
-<% @page.attachments.blobs.each do |document| %>
-  <p>
-    <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
-  </p>
-<% end %>
+<p>
+  <strong>Transcript:</strong>
+   <% if @page.transcript.attached? %>
+      <%= link_to @page.transcript.filename, rails_blob_path(@page.transcript, disposition: 'preview') %>
+   <%end%>
+</p>
 
 <%if current_user.id == @page.user_id %>
   <%=link_to 'Edit', edit_page_path(@page) %> 
