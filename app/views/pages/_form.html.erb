@@ -16,6 +16,13 @@
     <%= form.text_field :name %>
   </div>
 
+  <p>
+    <%= form.label "Profile Photo" %>
+    <%= profile_picture(@page)%>
+    <%= form.label "Upload Photo" %>
+    <%= form.file_field :avatar %>
+  </p>
+
   <div class="field">
     <%= form.label :about_me %>
     <%= form.text_area :about_me %>

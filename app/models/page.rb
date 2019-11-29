@@ -6,4 +6,5 @@ class Page < ApplicationRecord
 
     has_one_attached :transcript
     has_one_attached :resume
+    has_one_attached :avatar
 end
