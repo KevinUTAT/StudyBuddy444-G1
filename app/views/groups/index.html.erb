@@ -2,6 +2,12 @@
 <p>These are study groups that you are not a part of. Join any that interest you!</p>
 
 <h3>Search by course:</h3>
+<form class="form-inline my-2 my-lg-0" >
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+</br>
 
 <table>
     <tr>
@@ -25,5 +31,6 @@
         </tr>
     <% end %>
 
-    <%= link_to "Create a new study group", { :action => "new" }, class:"btn btn-primary" %>
 </table>
+</br>
+<%= link_to "Create a new study group", { :action => "new" }, class:"btn btn-outline-success my-2 my-sm-0" %>

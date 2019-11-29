@@ -10,7 +10,7 @@
   <% @members.each do |member| %>
     <% if member.group_id == @group.id %>
       <li>
-        <%= @users.find(member.user_id).email%>
+        <%= @users.find(member.user_id).page.name%>
       </li>
     <% end %>
   <% end %>
