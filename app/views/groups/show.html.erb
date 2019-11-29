@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Category:</strong>
+  <strong>Course:</strong>
   <%= @group.category %>
+</p>
+
+<p>
+  <strong>Lead:</strong>
+  <%= @group.user.page.name %>
 </p>
 
 <p>
