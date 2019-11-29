@@ -47,3 +47,15 @@ password: 12345678 \
 this account don't use real money, so go wild 
 
 
+# Seeding
+1. rails db:drop
+2. rails db:create
+3. rails db:migrate
+4. rails db:seed
+
+note that all users have the same password: "password"
+to see list of all users:
+open up terminal
+ 1. $ rails c
+ 2. $ User.all
+ 
