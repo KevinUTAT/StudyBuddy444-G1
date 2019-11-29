@@ -32,3 +32,26 @@
   <%= link_to 'Back', pages_path %>
 <%end%>
 
+<p></p>
+<h1><%= @page.name %>'s notes</h1>
+<div id="posts">
+    <% @page.user.notes.each do |note|%>
+        <h2><%= note.course %></h2>
+        <div class="post">
+        <h2 class="title"><%= link_to note.title, note %></h2>
+        <h4><%= note.content %> </h4>
+
+        <% note.attachments.blobs.each do |document| %>
+        <p>
+        <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
+        </p>
+        <% end %>
+
+        <p class="date"><%= time_ago_in_words(note.created_at)%> ago </p>
+        <p><%= note.user.email %></p>
+
+        <p>Likes: <%= note.get_upvotes.size() %></p>
+        </div>
+    <% end %>
+</div>
+
