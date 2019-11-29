@@ -29,13 +29,18 @@
 </p>
 
 <p>
-  <strong>Start time:</strong>
-  <%= @group.start_time %>
+  <strong>Date:</strong>
+  <%= @group.date %>
 </p>
 
 <p>
-  <strong>End time:</strong>
-  <%= @group.end_time %>
+  <strong>Time:</strong>
+  <%= @group.time.to_s(:time) %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @group.duration %> hours
 </p>
 
 <p>
