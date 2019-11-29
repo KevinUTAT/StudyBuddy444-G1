@@ -7,7 +7,9 @@
 
 <p>
   <strong>Lead:</strong>
+  <li>
   <%= @group.user.page.name %>
+  </li>
 </p>
 
 <p>
@@ -42,15 +44,18 @@
 </p>
 
 <p>
-  <strong>Capacity:</strong>
+  <strong>Number of buddies needed:</strong>
   <%= @group.capacity %>
 </p>
 
-<% if (!Member.exists?(user_id: current_user.id, group_id: @group.id)) %>
-  <%= button_to "Join Study Group", {:action => "join", :group_id => @group.id}, :method => :post %>
-<% else %>
-  <%= button_to "Leave Study Group", {:action => "unjoin", :group_id => @group.id}, :method => :post %>
+<% if current_user.id != @group.user_id %>
+  <% if (!Member.exists?(user_id: current_user.id, group_id: @group.id)) %>
+    <%= button_to "Join Study Group", {:action => "join", :group_id => @group.id}, :method => :post %>
+  <% else %>
+    <%= button_to "Leave Study Group", {:action => "unjoin", :group_id => @group.id}, :method => :post %>
+  <% end %>
 <% end %>
+
 <%= button_to "Explore Study Groups", { :action => "index" }, :method => :get %>
 
 <% if @group.user_id == current_user.id%>
