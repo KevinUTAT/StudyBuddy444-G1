@@ -48,9 +48,9 @@ this account don't use real money, so go wild
 
 
 # Seeding
-rails db:drop
-rails db:create
-rails db:migrate
-rails db:seed
+1. rails db:drop
+2. rails db:create
+3. rails db:migrate
+4. rails db:seed
 
 
