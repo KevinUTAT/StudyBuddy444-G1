@@ -2,25 +2,27 @@
 <p>These are study groups that you are not a part of. Join any that interest you!</p>
 
 <h3>Search by course:</h3>
-<form class="form-inline my-2 my-lg-0" >
-  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form>
+<%= form_tag(groups_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search]) %>
+    <%= submit_tag 'Search', name: nil, class:"btn btn-secondary" %>
+<% end %>
 
 </br>
 
 <table>
     <tr>
-            <th>Course</th>
-            <th>Description</th>
-            <th>Start Time</th>
-            <th>End Time</th>
-            <th>Location</th>
-            <th>Capacity</th>
+        <th>Lead</th>
+        <th>Course</th>
+        <th>Description</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Location</th>
+        <th>Capacity</th>
     </tr>
 
     <% @groups.each do |group| %>
         <tr>
+            <td><%= group.user.page.name %></td>
             <td><%= group.category %></td>
             <td><%= group.description %></td>
             <td><%= group.start_time %></td>

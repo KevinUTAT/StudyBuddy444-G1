@@ -10,8 +10,8 @@
 <table>
     <thead>
         <tr>
-            <th>User</th>
-            <th>Category</th>
+            <th>Lead</th>
+            <th>Course</th>
             <th>Description</th>
             <th>Start time</th>
             <th>End time</th>
@@ -24,7 +24,7 @@
     <tbody>
         <% @groups_created.each do |group| %>
             <tr>
-                <td><%= group.user.email %></td>
+                <td><%= group.user.page.name %></td>
                 <td><%= group.category %></td>
                 <td><%= group.description %></td>
                 <td><%= group.start_time %></td>

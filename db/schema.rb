@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_11_26_185526) do
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.string "course"
+    t.string "prof"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
