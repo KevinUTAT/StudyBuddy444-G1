@@ -47,3 +47,10 @@ password: 12345678 \
 this account don't use real money, so go wild 
 
 
+# Seeding
+rails db:drop
+rails db:create
+rails db:migrate
+rails db:seed
+
+
