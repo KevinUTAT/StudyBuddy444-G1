@@ -53,4 +53,9 @@ this account don't use real money, so go wild
 3. rails db:migrate
 4. rails db:seed
 
-
+note that all users have the same password: "password"
+to see list of all users:
+open up terminal
+ 1. $ rails c
+ 2. $ User.all
+ 
