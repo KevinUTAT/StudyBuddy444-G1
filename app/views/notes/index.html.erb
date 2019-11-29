@@ -12,6 +12,7 @@ Notes
 <p>
     <th><%= togglesort "title", "Title" %></th>
     <th><%= togglesort "course", "Course" %></th>
+    <th><%= togglesort "prof", "Professor" %></th>
     <th><%= togglesort "created_at", "Created" %></th>
     <th><%= togglesort "cached_votes_score", "Likes" %></th>
 </p>
@@ -19,6 +20,7 @@ Notes
     <div id="posts">
         <% @notes.each do |note|%>
         <h2><%= note.course %></h2>
+        <h4><%= note.prof %></h4>
         <div class="post">
             <h2 class="title"><%= link_to note.title, note %></h2>
             <h4><%= note.content %> </h4>

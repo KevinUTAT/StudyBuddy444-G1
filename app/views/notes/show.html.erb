@@ -1,5 +1,6 @@
 <h1><%= @note.course %></h1>
 <h2><%= @note.title %></h2>
+<h3><%= @note.prof %></h3>
 <h4><%= @note.content %></h4>
 
 <% @note.attachments.blobs.each do |document| %>
@@ -12,9 +13,10 @@
 <p>
 <%= link_to "like", controller: "notes", action: "like", id: @note.id %>
 <%= link_to "unlike", controller: "notes", action: "unlike", id: @note.id %>
+<%= link_to "Buy me a coffee", notes_donate_path(noteid: @note.id) %>
 </p>
 
-<%= link_to 'edit', edit_note_path(@note)%>
+<%= link_to 'edit', edit_note_path(id: @note.id)%>
 <%= link_to 'delete', note_path(@note), method: :delete, data: {confirm: "are you sure you want to delete this?"}%>
 <%= link_to 'notes', notes_url %>
 <%= link_to 'back', :back %>

@@ -75,6 +75,11 @@ class NotesController < ApplicationController
         redirect_back(fallback_location: root_path)
     end
 
+    # Buy me a coffee
+    def donate
+        @note = Note.find(params[:noteid])
+    end
+
     
     private
     
@@ -84,7 +89,7 @@ class NotesController < ApplicationController
     
     
     def note_params
-        params.require(:note).permit(:title, :course, :content, :search, attachments: [])
+        params.require(:note).permit(:title, :course, :prof, :content, :search, attachments: [])
     end
     
     def require_permission

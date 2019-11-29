@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Profiles</h1>
+<h5>Connect with other students for homework help!</h5>
+
+<form class="form-inline my-2 my-lg-0" >
+  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+<br/>
 
 <table>
   <tbody>
@@ -10,7 +17,8 @@
           <td><%=profile_picture(page)%></td>
           <td>
               <h2><%= page.name %></h2>
-              <h7><%= link_to 'View Profile', page %></h7>
+              <h7><%= link_to 'View Profile', page %></h7> |
+              <h7><%= link_to 'Contact' %></h7>
               <p><%= page.about_me %></p>
           </td>
       </tr>

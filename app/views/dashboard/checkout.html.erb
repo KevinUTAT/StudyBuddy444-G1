@@ -1,7 +1,9 @@
-<h1>Check Out<h>
+<h1>Check Out</h1>
 
-<h2>$6.9<h2>
-<h3>To tutor xxx<h3>
+<% current_price = 4.20 %>
+
+<h2>$ <%= current_price %></h2>
+
 
 <body>
   <script
@@ -11,12 +13,14 @@
   <div id="paypal-button-container"></div>
 
   <script>
+  var js_price = <%= current_price %>
+  console.log(js_price)
   paypal.Buttons({
     createOrder: function(data, actions) {
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: '6.9'
+            value: js_price
           }
         }]
       });
