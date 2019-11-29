@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :groups do
         collection do
             post 'join'
+            post 'unjoin'
         end
     end
     get 'dashboard/index'
