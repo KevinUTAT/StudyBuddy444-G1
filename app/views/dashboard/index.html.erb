@@ -2,16 +2,16 @@
 <p>This is going to be the central hub for all the services a user can access on the website</p>
 <p>For each of the Notes, Groups, Tutors categories, it will have all the CRUD functionalities</p>
 <% if user_signed_in? %>
-      <h2>Welcome to your dashboard, <strong><%= current_user.name %></strong>.</h2>
+      <h2>Welcome to your dashboard, <strong><%= current_user.page.name %></strong>.</h2>
 <% end %>
 
-<h1>Groups</h1>
+<h1>Groups you created:</h1>
 
 <table>
     <thead>
         <tr>
-            <th>User</th>
-            <th>Category</th>
+            <th>Lead</th>
+            <th>Course</th>
             <th>Description</th>
             <th>Start time</th>
             <th>End time</th>
@@ -22,9 +22,9 @@
     </thead>
 
     <tbody>
-        <% @groups.each do |group| %>
+        <% @groups_created.each do |group| %>
             <tr>
-                <td><%= group.user.email %></td>
+                <td><%= group.user.page.name %></td>
                 <td><%= group.category %></td>
                 <td><%= group.description %></td>
                 <td><%= group.start_time %></td>
@@ -41,7 +41,39 @@
 
 <br>
 
-<%= link_to 'New Group', new_group_path %>
+<h1>Groups you joined:</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @groups_joined.each do |group| %>
+            <tr>
+                <td><%= group.user.email %></td>
+                <td><%= group.category %></td>
+                <td><%= group.description %></td>
+                <td><%= group.start_time %></td>
+                <td><%= group.end_time %></td>
+                <td><%= group.location %></td>
+                <td><%= group.capacity %></td>
+                <td><%= link_to 'Show', group %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Explore more study groups', groups_path, class:"btn btn-outline-success my-2 my-sm-0"%>
 
 
 <h1>Your posted notes</h1>
