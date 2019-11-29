@@ -1,18 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-   <strong>Name:</strong>
-   <%= @page.name %>
-</p>
-
-<div class="row">
-    <%= profile_picture(@page)%>
-</div>
-
-<p>
-   <strong>About me:</strong>
-   <%= @page.about_me %>
-</p>
+<table>
+  <tbody>
+      <tr>
+          <td><%=profile_picture(@page)%></td>
+          <td>
+              <h1><%= @page.name %></h1>
+              <p><%= @page.about_me %></p>
+          </td>
+      </tr>
+  </tbody>
+</table>
 
 <p>
   <strong>Resume:</strong>
@@ -30,6 +28,7 @@
 
 <%if current_user.id == @page.user_id %>
   <%=link_to 'Edit', edit_page_path(@page) %> 
+<%else%>
+  <%= link_to 'Back', pages_path %>
 <%end%>
 
-<%# link_to 'Back', pages_path %>

@@ -9,6 +9,6 @@ module PagesHelper
             image = asset_path('avatar-placeholder.png')
         end
         
-        ('<image src="' + image + '", width="' + size + '" height="' + size + '">').html_safe
+        ('<img src="' + image + '", width="' + size + '" height="' + size + '">').html_safe
     end 
 end
