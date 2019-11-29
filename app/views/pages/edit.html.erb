@@ -2,11 +2,7 @@
 
 <%= render 'form', page: @page %>
 
-<% @page.attachments.blobs.each do |document| %>
-    <p>
-        <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
-    </p>
-    <% end %>
+
 
 <%= link_to 'Cancel', @page %> 
 <%# link_to 'Back', pages_path %>

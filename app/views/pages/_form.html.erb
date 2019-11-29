@@ -16,15 +16,39 @@
     <%= form.text_field :name %>
   </div>
 
+  <p>
+    <%= form.label "Profile Photo" %>
+    <%= profile_picture(@page)%>
+    <%= form.label "Upload Photo" %>
+    <%= form.file_field :avatar %>
+  </p>
+
   <div class="field">
     <%= form.label :about_me %>
     <%= form.text_area :about_me %>
   </div>
 
-  <div class="field">
-      <%= form.label "Attatch Resume" %><br>
-      <%= form.file_field :attachments, multiple: true %>
-    </div>
+  <p>
+    <% if @page.resume.attached? %>
+        <%= form.label "Resume" %>
+        <%= link_to @page.resume.filename, rails_blob_path(@page.resume, disposition: 'preview') %>
+        <%= link_to "Remove", controller: "pages", action: "delete_resume", id: @page.id %>
+    <%else%>
+        <%= form.label "Upload Resume" %>
+        <%= form.file_field :resume %>
+    <%end%> 
+  </p>
+
+  <p>
+    <% if @page.transcript.attached? %>
+        <%= form.label "Transcript" %>
+        <%= link_to @page.transcript.filename, rails_blob_path(@page.transcript, disposition: 'preview') %>
+        <%= link_to "Remove", controller: "pages", action: "delete_transcript", id: @page.id %>
+    <%else%>
+        <%= form.label "Upload Transcript" %>
+        <%= form.file_field :transcript %>
+    <%end%> 
+  </p>
 
   <div class="actions">
     <%= form.submit %>
