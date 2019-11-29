@@ -7,5 +7,6 @@ class DashboardController < ApplicationController
 
 
   def checkout
+    @groups = Group.all
   end
 end

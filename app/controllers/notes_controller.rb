@@ -75,6 +75,11 @@ class NotesController < ApplicationController
         redirect_back(fallback_location: root_path)
     end
 
+    # Buy me a coffee
+    def donate
+        @note = Note.find(params[:noteid])
+    end
+
     
     private
     

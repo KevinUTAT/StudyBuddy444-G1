@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
     get 'dashboard/index'
     get 'dashboard/checkout'
+    get 'notes/donate'
     get 'home/index'
     devise_for :users, controllers: {
         sessions: 'users/sessions'
