@@ -1,5 +1,4 @@
 class GroupsController < ApplicationController
-    before_action :find_group, only: [:show, :edit, :update, :destroy]
     # only signed in can create groups
     before_action :authenticate_user!, except: [:index, :show]
     before_action :require_permission, only: [:edit, :update, :destroy]
@@ -48,13 +47,47 @@ class GroupsController < ApplicationController
         redirect_to root_path
     end
   
+    # def join
+    #     group_id = params[:group_id]
+    #     group = Group.find(group_id)
+    #     @member = Member.new(user_id: current_user.id, group_id:group_id)
+        
+    #     @member.save
+    #     if @member.save
+    #         flash[:notice] = "Congrats! You have joined this study group!"
+    #     end
+    #     redirect_to :action => "show", :id => group_id
+    # end
+
     def join
-      group_id = params[:group_id]
-      group = Group.find(group_id)
-      @member = Member.new(user_id: current_user.id, group_id:group_id)
-  
-      @member.save
-      redirect_to :action => "show", :id => group_id
+        #course_id = params[:course_id]
+        group_id = params[:group_id]
+        curr_num_members = Member.all.select {|a| a.group_id == group_id }.count
+
+        group = Group.find(group_id)
+        group_capacity = group.capacity
+
+        if curr_num_members < group_capacity
+            @member = Member.new(user_id: current_user.id, group_id:group_id)
+            @member.save
+            flash[:notice] = "Congrats! You have joined this study group!"
+        else
+            flash[:notice] = "Sorry, the study group is full!"
+        end
+        
+        redirect_to :action => "show", :id => group_id
+    end
+
+    def unjoin
+        #course_id = params[:course_id]
+        group_id = params[:group_id]
+        group = Group.find(group_id)
+
+        @member = Member.where(group_id: group_id, user_id: current_user.id)
+        @member.where(group_id: group_id, user_id: current_user.id).destroy_all
+        flash[:notice] = "You have left this study group."
+
+        redirect_to :action => "show", :id => group_id
     end
   
   

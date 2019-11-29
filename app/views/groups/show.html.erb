@@ -6,6 +6,17 @@
 </p>
 
 <p>
+  <strong>Study Group Members:</strong>
+  <% @members.each do |member| %>
+    <% if member.group_id == @group.id %>
+      <li>
+        <%= @users.find(member.user_id).email%>
+      </li>
+    <% end %>
+  <% end %>
+</p>
+
+<p>
   <strong>Description:</strong>
   <%= @group.description %>
 </p>
@@ -30,18 +41,12 @@
   <%= @group.capacity %>
 </p>
 
-<p>
-  <strong>Study Group Members:</strong>
-  <% @members.each do |member| %>
-    <% if member.group_id == @group.id %>
-      <p><%= @users.find(member.user_id).name%></p>
-    <% end %>
-  <% end %>
-</p>
-
-<% if (!Member.exists?(user_id: current_user.id)) %>
-  <%= button_to "Join", {:action => "join", :group_id => @group.id}, :method => :post %>
+<% if (!Member.exists?(user_id: current_user.id, group_id: @group.id)) %>
+  <%= button_to "Join Study Group", {:action => "join", :group_id => @group.id}, :method => :post %>
+<% else %>
+  <%= button_to "Leave Study Group", {:action => "unjoin", :group_id => @group.id}, :method => :post %>
 <% end %>
+<%= button_to "Return to all study groups", { :action => "index" }, :method => :get %>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', dashboard_index_path %>
