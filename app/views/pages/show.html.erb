@@ -6,6 +6,7 @@
           <td><%=profile_picture(@page)%></td>
           <td>
               <h1><%= @page.name %></h1>
+              <p><%= @page.user.email%></p>
               <p><%= @page.about_me %></p>
           </td>
       </tr>
