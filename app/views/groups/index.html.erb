@@ -8,14 +8,17 @@
 <% end %>
 
 </br>
-
+<%= link_to "Create a new study group", { :action => "new" }, class:"btn btn-outline-success my-2 my-sm-0" %>
+</br>
+</br>
 <table>
     <tr>
         <th>Lead</th>
         <th>Course</th>
         <th>Description</th>
-        <th>Start Time</th>
-        <th>End Time</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Duration (hours)</th>
         <th>Location</th>
         <th>Capacity</th>
     </tr>
@@ -25,8 +28,9 @@
             <td><%= group.user.page.name %></td>
             <td><%= group.category %></td>
             <td><%= group.description %></td>
-            <td><%= group.start_time %></td>
-            <td><%= group.end_time %></td>
+            <td><%= group.date %></td>
+            <td><%= group.time.to_s(:time) %></td>
+            <td><%= group.duration %></td>
             <td><%= group.location %></td>
             <td><%= group.capacity %></td>
             <td><%= link_to 'Show', controller: "groups", action: "show", id: group %></td>
@@ -34,5 +38,3 @@
     <% end %>
 
 </table>
-</br>
-<%= link_to "Create a new study group", { :action => "new" }, class:"btn btn-outline-success my-2 my-sm-0" %>
