@@ -7,4 +7,17 @@ class Page < ApplicationRecord
     has_one_attached :transcript
     has_one_attached :resume
     has_one_attached :avatar
+
+    def self.search(search)
+        if search
+            if search == ""
+                self.all
+            else
+                self.all.where("lower(name) LIKE ?", "%#{search.downcase}%")
+            end
+        else
+            self.all
+        end
+    end
+
 end
