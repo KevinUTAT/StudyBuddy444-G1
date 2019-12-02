@@ -19,4 +19,9 @@ class User < ApplicationRecord
 
          
   acts_as_voter
+
+  def accept_donation_user(amount)
+    self.balance += amount
+    self.save
+  end
 end

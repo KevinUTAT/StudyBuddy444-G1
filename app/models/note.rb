@@ -19,4 +19,8 @@ class Note < ApplicationRecord
             self.all
         end
     end
+
+    def accept_donation(amount)
+        self.user.accept_donation_user(amount)
+    end
 end

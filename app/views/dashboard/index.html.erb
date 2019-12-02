@@ -3,6 +3,7 @@
 <p>For each of the Notes, Groups, Tutors categories, it will have all the CRUD functionalities</p>
 <% if user_signed_in? %>
       <h2>Welcome to your dashboard, <strong><%= current_user.page.name %></strong>.</h2>
+      <h3>Current Banlance: <strong>$<%= current_user.balance %></strong></h3>
 <% end %>
 
 <h1>Groups you created:</h1>
@@ -27,8 +28,8 @@
                 <td><%= group.user.page.name %></td>
                 <td><%= group.category %></td>
                 <td><%= group.description %></td>
-                <td><%= group.start_time %></td>
-                <td><%= group.end_time %></td>
+                <td><%= group.time %></td>
+                <td><%= group.duration %></td>
                 <td><%= group.location %></td>
                 <td><%= group.capacity %></td>
                 <td><%= link_to 'Show', group %></td>

@@ -13,7 +13,8 @@ require 'faker'
     User.create!(
         email: Faker::Internet.free_email,
         password: "password",
-        password_confirmation: "password"    
+        password_confirmation: "password",
+        balance: 0
     )
 end
 
