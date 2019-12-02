@@ -19,6 +19,7 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = current_user.build_page
+    render :layout => 'no_navbar'
   end
 
   # GET /pages/1/edit
