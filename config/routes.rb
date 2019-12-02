@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     get 'dashboard/checkout'
     get 'notes/donate'
     get 'home/index'
+    get 'home/aboutus'
+    get 'home/faq'
+    get 'home/map'
+    get 'home/privacy'
+    get 'home/tos'
     devise_for :users, controllers: {
         sessions: 'users/sessions',
         registrations: 'users/registrations'
