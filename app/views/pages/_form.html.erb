@@ -31,7 +31,7 @@
   <p>
     <% if @page.resume.attached? %>
         <%= form.label "Resume" %>
-        <%= link_to @page.resume.filename, rails_blob_path(@page.resume, disposition: 'preview') %>
+        <%= link_to "My Resume", rails_blob_path(@page.resume, disposition: 'preview') %>
         <%= link_to "Remove", controller: "pages", action: "delete_resume", id: @page.id %>
     <%else%>
         <%= form.label "Upload Resume" %>
@@ -42,7 +42,7 @@
   <p>
     <% if @page.transcript.attached? %>
         <%= form.label "Transcript" %>
-        <%= link_to @page.transcript.filename, rails_blob_path(@page.transcript, disposition: 'preview') %>
+        <%= link_to "My Transcript", rails_blob_path(@page.transcript, disposition: 'preview') %>
         <%= link_to "Remove", controller: "pages", action: "delete_transcript", id: @page.id %>
     <%else%>
         <%= form.label "Upload Transcript" %>
