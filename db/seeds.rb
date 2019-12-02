@@ -31,6 +31,12 @@ for userData in users do
     )
 
     page.avatar.attach(io: file, filename: filename)
+
+    resume = ["craig_novak.pdf","gary_garrison.pdf","gregory_hoffman.pdf","jonathan_philips.pdf", "Lee_silvaro.pdf", "micheal_sierra.pdf", "robert_noberg.pdf", "robert_turner.pdf", "sam_williamson.pdf"].sample
+    page.resume.attach(
+        io: File.open("db/fakeResumes/#{resume}"), 
+        filename: resume)
+
 end
 
 50.times do
