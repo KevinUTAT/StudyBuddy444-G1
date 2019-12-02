@@ -61,6 +61,11 @@ body{
     border-radius: 0.5em;
 }
 
+#notes{
+    background:white;
+    padding: 1em 5%;
+}
+
 .post{
     margin: 1em 0;
     padding: 1em 0;
@@ -80,5 +85,20 @@ body{
 .date{
     margin-top:0.25rem;
     font-size: 0.9rem;
+    color:#B2BAC2;
+}
+
+.link_to_color{
+    color: #397CAC;
+}
+
+.note{
+    margin: 1em 0;
+    padding: 1em 0;
+    border-top: 1px solid #d1d1d1;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.notetitle{
     color:#B2BAC2;
 }

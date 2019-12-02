@@ -29,4 +29,6 @@ Rails.application.routes.draw do
     get 'note/index'
     get 'like' => 'notes#like'
     get 'unlike' => 'notes#unlike'
+    get 'dislike' => 'notes#dislike'
+    get 'undislike' => 'notes#undislike'
 end
