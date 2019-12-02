@@ -5,66 +5,185 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <title>StudyBuddy</title>
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
       <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      
    </head>
-   <body>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-         <a class="navbar-brand" href="/">studyBuddy</a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-               <%if user_signed_in? %>
-                     <%# categories for services %>
+   <body>   
+      
+   <%if user_signed_in? %>
+      <%# start navbar %>
+      <!-- Wrapper -->
+      <div class="wrapper">
+      
+         <!-- Sidebar -->
+      <nav class="sidebar">
+ 
+        <!-- close sidebar menu -->
+        <div class="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+ 
+        <div class="logo">
+            <h3>StudyBuddy</h3>
+        </div>
+ 
+        <ul class="list-unstyled menu-elements">
+            <li>
+               <%= link_to "Dashboard", dashboard_index_path, :class => "scroll-link" %>
+            </li>
+            <li>
+               <%= link_to "Notes", notes_url, :class => "scroll-link" %>        
+            </li>
+            <li>
+               <%= link_to "Groups", groups_url, :class => "scroll-link" %>
+            </li>
+            <li>
+               <%= link_to "Buddies", pages_url,  :class => "scroll-link" %>
+            </li>
+            <%# accordian menus %>
+
+            <li>
+                <a href="#postsSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
+                    Posts
+                </a>
+                <ul class="collapse list-unstyled" id="postsSections">
+                    <li>
+                        <%= link_to "Posts", posts_url, :class => "scroll-link" %>        
+                    </li>
                      <% Category.all.each do |category| %>
-                        <button class="btn my-2 my-sm-0"><a><%= link_to category.name, posts_path(category: category.name) %></a></button>
+                        <li>
+                           <%= link_to category.name, posts_path(category: category.name), :class => "scroll-link" %>
+                        </li>
                      <% end %>
-                     <button class="btn my-2 my-sm-0"><a><%= link_to "Dashboard", dashboard_index_path%></a></button>
-                     <button class="btn my-2 my-sm-0"><a><%= link_to "Notes", notes_url%></a></button>
-                     <button class="btn my-2 my-sm-0"><a><%= link_to "Posts", posts_url%></a></button>
-                     <button class="btn my-2 my-sm-0"><a><%= link_to "Groups", groups_url%></a></button>
-                     <button class="btn my-2 my-sm-0"><a><%= link_to "Buddies", pages_url%></a></button>
+                </ul>
+            </li>
+            <li>
+                <a href="#settingsSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
+                    Settings
+                </a>
+                <ul class="collapse list-unstyled" id="settingsSections">
+                    <li>
+                     <%= link_to "View Profile",  current_user.page , :class => "scroll-link"  %>
+                    </li>
+                    <li>
+                     <%= link_to "My Account", edit_user_registration_path(current_user) , :class => "scroll-link" %>
+                    </li>
+                    <li></li>
+                    <li><%= link_to "Log out #{current_user.email}", destroy_user_session_path, :method => :delete , :class => "scroll-link" %></li> 
 
-                     <form class="form-inline my-2 my-lg-0" >
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                     </form>
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Settings
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "View Profile",  current_user.page%></a></button>
-                              <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "My Account", edit_user_registration_path(current_user)%></a></button>   
-                        <div class="dropdown-divider"></div>
-                           <button class=" dropdown-item btn my-2 my-sm-0"><a><%= link_to "Log out #{current_user.email}", destroy_user_session_path, :method => :delete%></a></button>
-                        </div>
-                     </li>
-               <% else %>
-                  <button class="btn btn-outline-success my-2 my-sm-0"><a><%= link_to "Sign Up", new_user_registration_path%></a></button>
-                  <button class="btn btn-outline-success my-2 my-sm-0"><a><%= link_to "Sign In", new_user_session_path%></a></button>
-               <% end %>
-            </ul>
-         </div>
+                    
+                </ul>
+            </li>
+        </ul>
+ 
+        <div class="to-top">
+            <a class="btn btn-primary btn-customized-3" href="#" role="button">
+                <i class="fas fa-arrow-up"></i> Top
+            </a>
+        </div>
+ 
+        
+ 
       </nav>
-      <div class="container">
-
-         <p class="notice"><%= notice %></p>
-         <p class="alert"><%= alert %></p>
+         <!-- End sidebar -->
+      
+         
+      
+         <!-- Content -->
+         <div class="content">
+      
+            <!-- open sidebar menu -->
+            <a class="btn btn-primary btn-customized open-menu" href="#" role="button">
+                  <i class="fas fa-align-left"></i> <span>Menu</span>
+            </a>
+      
+            <!-- ... -->
+      
+            <!-- here is the page's content (not shown here) -->
+      
+            <!-- ... -->
+      
+         </div>
+         <!-- End content -->
+      
       </div>
+   <% else %>
+
+      <button class="btn btn-outline-success my-2 my-sm-0"><a><%= link_to "Sign Up", new_user_registration_path%></a></button>
+      <button class="btn btn-outline-success my-2 my-sm-0"><a><%= link_to "Sign In", new_user_session_path%></a></button>
+   <% end %>
+
+
+      <%# end navbar %>
       <div class="container">
          <%= yield %>
       </div>
+
+
+      <script>
+     
+         jQuery(document).ready(function() {
+ 
+            $('.dismiss, .overlay').on('click', function() {
+               $('.sidebar').removeClass('active');
+               $('.overlay').removeClass('active');
+            });
+         
+            $('.open-menu').on('click', function(e) {
+               e.preventDefault();
+               $('.sidebar').addClass('active');
+               $('.overlay').addClass('active');
+               // close opened sub-menus
+               $('.collapse.show').toggleClass('show');
+               $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+ 
+   
+                     
+          /*  Navigation */
+         
+            
+            
+            function scroll_to(clicked_link, nav_height) {
+               var element_class = clicked_link.attr('href').replace('#', '.');
+               var scroll_to = 0;
+               if(element_class != '.top-content') {
+                  element_class += '-container';
+                  scroll_to = $(element_class).offset().top - nav_height;
+               }
+               if($(window).scrollTop() != scroll_to) {
+                  $('html, body').stop().animate({scrollTop: scroll_to}, 1000);
+               }
+            }
+
+            $('.to-top a').on('click', function(e) {
+               e.preventDefault();
+               if($(window).scrollTop() != 0) {
+                  $('html, body').stop().animate({scrollTop: 0}, 1000);
+               }
+            });
+
+            
+            
+
+ 
+         });
+    
+
+      </script>
+     
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-   </body>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
+  </body>
 </html>
