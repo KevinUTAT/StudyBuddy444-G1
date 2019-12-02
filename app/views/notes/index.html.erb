@@ -34,7 +34,7 @@ Notes
 
                 <% note.attachments.blobs.each do |document| %>
                     <p class="card-text">
-                        <%= link_to document.filename, rails_blob_path(document, disposition: 'preview'), target: :_blank %>
+                        <%= link_to document.filename, rails_blob_path(document, disposition: 'preview'), target: :_blank, :class => 'link_to_color' %>
                     </p>
                 <% end %>
                 <p class="card-text"><%= link_to note.user.email, page_path(note.user.id), :class => 'link_to_color' %></p>
