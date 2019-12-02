@@ -178,8 +178,8 @@ body{
 /* Style for all buttons with the class btn-customized */
  
 a.btn-customized {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
     padding: .75rem 1.5rem;
     background: #f35b3f;
     border: 0;
@@ -232,14 +232,14 @@ a.btn-customized.btn.btn-primary:not(:disabled):not(.disabled):active:focus {
     transition: all .3s;
 }
  
-.sidebar .logo a {
+/* .sidebar .logo a {
     display: inline-block;
     width: 172px;
     height: 34px;
-    background: url(../img/logo.png) left top no-repeat;
+    background: url() left top no-repeat;
     border: 0;
     text-indent: -999999px;
-}
+} */
 .sidebar ul.menu-elements {
     padding: 10px 0;
     border-bottom: 1px solid #444;
@@ -337,20 +337,7 @@ a.btn-customized-3 i {
 }
 
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1),
-only screen and (        min-device-pixel-ratio: 2),
-only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) {
- 
-    .sidebar .logo a {
-        background-image: url(../img/logo@2x.png) !important;
-        background-repeat: no-repeat !important;
-        background-size: 172px 34px !important;
-    }
- 
-    
- 
+
+.card{
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }

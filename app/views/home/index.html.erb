@@ -1,9 +1,26 @@
-<h1>Welcome to StudyBuddy</h1>
+<div id="landingPage"> 
+    <div class="row">
+        <div class="col-md-6">
+                    <h1> Welcome to StuddyBuddy</h1>
+                    <br>
+                    <p>Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <br>
+                    <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary btn-customized"%>
+        </div>
+        <div class="col-md-6">
+            img here 
+        </div>
+        
+    </div>
+</div>
 
-<p>This is the landing page, with info about the service and links to the various static pages required by the project.</p>
+<div>
+    
 
-<p>If you are signed in you will see a button that will take you to your dashboard, 
-otherwise there will be no button</p>
-<% if user_signed_in?%>
-    <button><a><%= link_to "Dashboard", dashboard_index_path%></a></button>
-<% end %>
+    <p>If you are signed in you will see a button that will take you to your dashboard, 
+        otherwise there will be no button</p>
+        <% if user_signed_in?%>
+            <button><a><%= link_to "Dashboard", dashboard_index_path%></a></button>
+        <% end %>
+</div>
+
