@@ -37,6 +37,11 @@ for userData in users do
         io: File.open("db/fakeResumes/#{resume}"), 
         filename: resume)
 
+    transcript = ["David_hudgings.pdf","Mohammad_mannan.pdf","scott_lang.pdf"].sample
+    page.transcript.attach(
+        io: File.open("db/fakeTranscripts/#{transcript}"), 
+        filename: transcript)
+
 end
 
 50.times do
