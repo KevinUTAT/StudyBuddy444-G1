@@ -31,10 +31,14 @@
         </div>
  
         <div class="logo">
-            <h3>StudyBuddy</h3>
+               <h3 class="welcomePage">StudyBuddy</h3>
         </div>
  
         <ul class="list-unstyled menu-elements">
+
+            <li>
+               <%= link_to "Home", root_path, :class => "scroll-link" %></i>
+            </li>
             <li>
                <%= link_to "Dashboard", dashboard_index_path, :class => "scroll-link" %>
             </li>
