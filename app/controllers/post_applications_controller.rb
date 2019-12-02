@@ -15,7 +15,7 @@ class PostApplicationsController < ApplicationController
 
     private
         def post_application_params
-            params.require(:post_application).permit(:user_id)
+            params.require(:post_application).permit(:user_id, :is_accepted)
         end
 
 end

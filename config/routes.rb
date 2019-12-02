@@ -18,6 +18,12 @@ Rails.application.routes.draw do
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
     resources :posts do
       resources :post_applications, only: [:create, :destroy]
+
+      member do 
+        patch 'accept_applicant'
+        patch 'unaccept_applicant'
+        # post 'pay_teenager'
+      end
     end
 
     

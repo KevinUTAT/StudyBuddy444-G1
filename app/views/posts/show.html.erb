@@ -10,7 +10,11 @@
     <% @apps.order("created_at DESC").each do |app| %>
       <li>
         <%= app.user.email %>
-        <button href="">Accept (kevin)</button>
+        <% if !app.is_accepted %>
+          <%= link_to "Accept (kevin payment)", accept_applicant_post_path(@post, :post_application_id => app.id), method: :patch %>
+        <% else %>
+          <%= link_to "Unaccept", unaccept_applicant_post_path(@post, :post_application_id => app.id), method: :patch %>
+        <% end %>
       </li>
       <br>
     <% end %>
