@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'notes/donate'
     get 'home/index'
     get 'home/aboutus'
+    get 'home/contact'
     get 'home/faq'
     get 'home/map'
     get 'home/privacy'
