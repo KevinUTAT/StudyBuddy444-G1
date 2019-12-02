@@ -5,8 +5,12 @@ class GroupsController < ApplicationController
     before_action :require_permission, only: [:edit, :update, :destroy]
   
   
-    def index
-       redirect_to :dashboard_index
+    def index        
+        if params[:search].blank?
+            @groups = Group.all
+        else
+            @groups = Group.search(params[:search])
+        end
     end
   
     def show
@@ -33,9 +37,11 @@ class GroupsController < ApplicationController
   
     def edit
         @groups = Group.all.collect {|group| [ group.id ] }
+        @group = Group.find(params[:id])
     end
   
     def update
+        @group = Group.find(params[:id])
         if @group.update(group_params)
             redirect_to @group
         else
@@ -44,17 +50,40 @@ class GroupsController < ApplicationController
     end
   
     def destroy
+        @group = Group.find(params[:id])
         @group.destroy
-        redirect_to root_path
+        redirect_to dashboard_index_path
     end
-  
+
     def join
-      group_id = params[:group_id]
-      group = Group.find(group_id)
-      @member = Member.new(user_id: current_user.id, group_id:group_id)
-  
-      @member.save
-      redirect_to :action => "show", :id => group_id
+        #course_id = params[:course_id]
+        group_id = params[:group_id]
+        curr_num_members = Member.all.select {|a| a.group_id == group_id }.count
+
+        group = Group.find(group_id)
+        group_capacity = group.capacity
+
+        if curr_num_members < group_capacity
+            @member = Member.new(user_id: current_user.id, group_id:group_id)
+            @member.save
+            flash[:notice] = "Congrats! You have joined this study group!"
+        else
+            flash[:notice] = "Sorry, the study group is full!"
+        end
+        
+        redirect_to :action => "show", :id => group_id
+    end
+
+    def unjoin
+        #course_id = params[:course_id]
+        group_id = params[:group_id]
+        group = Group.find(group_id)
+
+        @member = Member.where(group_id: group_id, user_id: current_user.id)
+        @member.where(group_id: group_id, user_id: current_user.id).destroy_all
+        flash[:notice] = "You have left this study group."
+
+        redirect_to :action => "show", :id => group_id
     end
   
   
@@ -66,12 +95,12 @@ class GroupsController < ApplicationController
   
   
     def group_params
-        params.require(:group).permit(:category, :description, :start_time, :end_time, :location, :capacity, :user_id)
+        params.require(:group).permit(:category, :description, :date, :time, :duration, :location, :capacity, :user_id, :search)
     end
     
     def require_permission
         if current_user != Group.find(params[:id]).user
-            redirect_to root_path
+            redirect_to groups_url
         end
     end
   

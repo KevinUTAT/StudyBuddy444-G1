@@ -19,4 +19,16 @@ class Note < ApplicationRecord
             self.all
         end
     end
+
+    def self.searchEmail(search)
+        if search
+            if search == ""
+                self.all
+            else
+                self.joins(:user).where("lower(Users.email) = ?", search.downcase)
+            end
+        else
+            self.all
+        end
+    end
 end

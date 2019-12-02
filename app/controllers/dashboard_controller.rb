@@ -1,11 +1,15 @@
 class DashboardController < ApplicationController
   before_action :authenticate_user!
   def index
-    @groups = Group.all
+    @groups_created = Group.all.select { |a| a.user_id == current_user.id }
+    @memberships = Member.all.select { |a| a.user_id == current_user.id}.pluck(:group_id)
+    @groups_joined = Group.all.select { |a| @memberships.include? a.id }
+
     @notes = Note.all
-   end
+  end
 
 
   def checkout
+    @groups = Group.all
   end
 end

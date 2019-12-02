@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_215011) do
+ActiveRecord::Schema.define(version: 2019_11_29_213842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,13 +45,14 @@ ActiveRecord::Schema.define(version: 2019_11_22_215011) do
   create_table "groups", force: :cascade do |t|
     t.string "category"
     t.text "description"
-    t.datetime "start_time"
-    t.datetime "end_time"
     t.text "location"
     t.integer "capacity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.date "date"
+    t.time "time"
+    t.integer "duration"
   end
 
   create_table "members", force: :cascade do |t|
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_215011) do
   create_table "notes", force: :cascade do |t|
     t.string "title"
     t.string "course"
+    t.string "prof"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -75,6 +77,14 @@ ActiveRecord::Schema.define(version: 2019_11_22_215011) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "name"
+    t.text "about_me"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "post_applications", force: :cascade do |t|
@@ -95,14 +105,6 @@ ActiveRecord::Schema.define(version: 2019_11_22_215011) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.integer "category_id"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.string "name"
-    t.text "about_me"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
