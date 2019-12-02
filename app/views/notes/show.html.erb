@@ -28,8 +28,8 @@
     </div>
 
     <p>
-    <%= link_to "like", controller: "notes", action: "like", id: @note.id %>
-    <%= link_to "dislike", controller: "notes", action: "dislike", id: @note.id %>
+    <%= link_to '<i class="fas fa-heart"></i>'.html_safe,controller: "notes", action: "like", id: @note.id  %>
+    <%= link_to '<i class="fas fa-thumbs-down"></i>'.html_safe,controller: "notes", action: "dislike", id: @note.id  %>
     <%= link_to "Buy me a coffee", notes_donate_path(noteid: @note.id) %>
     </p>
 
