@@ -18,7 +18,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         # data for paypal
         
-        @user = @post.user
+        # @user = @post.user
         # @user_id = @user.id
         # @user.name  is the name
         #for now take an arbritary price like 10$
@@ -59,18 +59,45 @@ class PostsController < ApplicationController
         redirect_to root_path
     end
 
+    def accept_applicant
+        @post = find_post
+        applicant_id = params[:post_application_id]
+        applicant = @post.post_applications.where(id: applicant_id)
+        if !applicant.empty?
+            applicant.update_all(is_accepted: true)
+            
 
+            redirect_to post_path(@post), notice:"Accepted applicant"
+        else
+            redirect_back root_url
+        end
+
+    end
+
+    def unaccept_applicant
+        @post = find_post
+        applicant_id = params[:post_application_id]
+        applicant = @post.post_applications.where(id: applicant_id)
+        if !applicant.empty?
+            applicant.update_all(is_accepted: false)
+            redirect_to post_path(@post), notice:"Unaccepted applicant"
+
+        else
+            redirect_back root_url
+        end
+
+    end
 
 
     private
 
     def find_post
-        @post = Post.find(params[:id])
+        Post.find(params[:id])
     end
 
 
     def post_params
-        params.require(:post).permit(:title, :content, :limit, :category_id)
+        params.require(:post).permit(:title, :content, :limit, :category_id, :is_accepting_applicants)
     end
     
     def require_permission

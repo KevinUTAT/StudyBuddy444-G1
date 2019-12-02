@@ -18,7 +18,8 @@
           <td>
               <h2><%= page.name %></h2>
               <h7><%= link_to 'View Profile', page %></h7> |
-              <h7><%= link_to 'Contact' %></h7>
+              <h7><%= link_to 'Contact' %></h7> |
+              <h7><%= link_to page.user.email %></h7>
               <p><%= page.about_me %></p>
           </td>
       </tr>

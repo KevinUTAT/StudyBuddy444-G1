@@ -14,16 +14,11 @@
 </table>
 
 <p>
-  <strong>Resume:</strong>
    <% if @page.resume.attached? %>
-      <%= link_to @page.resume.filename, rails_blob_path(@page.resume, disposition: 'preview') %>
+      <%= link_to "View Resume", rails_blob_path(@page.resume, disposition: 'preview') %> |
    <%end%>
-</p>
-
-<p>
-  <strong>Transcript:</strong>
    <% if @page.transcript.attached? %>
-      <%= link_to @page.transcript.filename, rails_blob_path(@page.transcript, disposition: 'preview') %>
+      <%= link_to "View Transcript", rails_blob_path(@page.transcript, disposition: 'preview') %>
    <%end%>
 </p>
 

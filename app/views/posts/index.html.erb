@@ -3,14 +3,40 @@ Posts
 <button class="btn btn-outline-success my-2 my-sm-0"><a><%= link_to "New Post", new_post_path%></a></button>
 </h1>
 <div id="posts">
-<% @posts.each do |post|%>
-    <div class="post">
-        <h2 class="title"><%= link_to post.title, post %></h2>
-        <h4><%= post.content %></h4>
-        <h4><%= post.limit %> </h4>
-        <p class="date"><%= time_ago_in_words(post.created_at)%> ago </p>
-        <p><%= post.user.email %></p>
-    </div>  
-<% end %>
+    <% @posts.each do |post|%>
+        <div class="post">
+            <h2 class="title"><%= link_to post.title, post %></h2>
+            <h4><%= post.content %></h4>
+            <h4><%= post.limit %> </h4>
+            <p class="date"><%= time_ago_in_words(post.created_at)%> ago </p>
+            <p><%= post.user.email %></p>
+        </div>  
+    <% end %>
 </div>
 
+
+<div  class="row" >
+<% @posts.each do |post|%>
+    <div class="col-md-4 col-sm-6" style="margin-top:8vh;">
+        <div class="card">
+            
+            <div class="card-body">
+                
+                <h2 class="card-title title"><%= link_to post.title, post %></h2>
+
+
+                <p class="card-text"><%= post.content %></p>
+                <p class="card-text"><%= post.limit %></p>
+                <p class="card-text"><small class="text-muted"><%= post.user.email %></small></p>
+
+
+
+            </div>
+            <div class="card-footer">
+                <p class="card-text"><small class="text-muted">updated <%= time_ago_in_words(post.created_at)%> ago</small></p>
+
+            </div>
+        </div>
+    </div>
+<% end %>
+</div>

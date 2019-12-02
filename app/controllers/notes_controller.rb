@@ -8,11 +8,14 @@ class NotesController < ApplicationController
     def index
         sort_order = sort_column + " " + sort_direction
         
+        @notes = Note.order(sort_order)
+        
         if Note.search(params[:search])
             #@notes = Note.search(params[:search]).order("created_at DESC")
-            @notes = Note.search(params[:search]).order(sort_order)
-        else
-            @notes = Note.order(sort_order)
+            @notes = @notes.search(params[:search])
+        end
+        if Note.searchEmail(params[:searchEmail])
+            @notes = @notes.searchEmail(params[:searchEmail])
         end
     end
     
@@ -75,6 +78,27 @@ class NotesController < ApplicationController
         redirect_back(fallback_location: root_path)
     end
 
+    def dislike
+        @note = Note.find(params[:id])
+        @note.disliked_by current_user
+        if @note.vote_registered? == true
+            flash[:notice] = "Successfully disliked this note."
+            else
+            flash[:notice] = "You have already disliked this note."
+        end
+        redirect_back(fallback_location: root_path)
+    end
+    def undislike
+        @note = Note.find(params[:id])
+        @note.undisliked_by current_user
+        if @note.vote_registered? == false
+            flash[:notice] = "Successfully undisliked this note."
+            else
+            flash[:notice] = "You cannot undislike this note."
+        end
+        redirect_back(fallback_location: root_path)
+    end
+    
     # Buy me a coffee
     def donate
         @note = Note.find(params[:noteid])
@@ -89,7 +113,7 @@ class NotesController < ApplicationController
     
     
     def note_params
-        params.require(:note).permit(:title, :course, :prof, :content, :search, attachments: [])
+        params.require(:note).permit(:title, :course, :prof, :content, :search, :searchName, :searchEmail, attachments: [])
     end
     
     def require_permission
