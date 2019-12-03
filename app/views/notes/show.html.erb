@@ -1,9 +1,15 @@
+</br>
+
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
 <div id="notes">
     <h1><%= @note.title %></h1>
 
     <p class = "date">Created <%= time_ago_in_words(@note.created_at)%> ago </p>
     <p>By
-    <%= link_to @note.user.email, page_path(@note.user.id), :class => 'link_to_color' %>
+    <%= link_to @note.user.page.name, page_path(@note.user.id), :class => 'link_to_color' %>
     </p>
 
     <div class="note">
@@ -33,12 +39,22 @@
 
     <p>
     <%= link_to '<i class="fas fa-heart"></i>'.html_safe,controller: "notes", action: "like", id: @note.id  %>
-    <%= link_to '<i class="fas fa-thumbs-down"></i>'.html_safe,controller: "notes", action: "dislike", id: @note.id  %>
-    <%= link_to "Buy me a coffee", notes_donate_path(noteid: @note.id) %>
+    <%= link_to '<i class="fas fa-thumbs-down"></i>'.html_safe,controller: "notes", action: "dislike", id: @note.id  %> | 
+    <%= link_to "Donate", notes_donate_path(noteid: @note.id) %>
     </p>
 
-    <%= link_to 'edit', edit_note_path(id: @note.id)%>
-    <%= link_to 'delete', note_path(@note), method: :delete, data: {confirm: "are you sure you want to delete this?"}%>
-    <%= link_to 'notes', notes_url %>
-    <%= link_to 'back', :back %>
+    <% if current_user.id == @note.user.id %>
+    <%= link_to 'Edit', edit_note_path(id: @note.id)%> |
+    <%= link_to 'Delete', note_path(@note), method: :delete, data: {confirm: "Are you sure you want to delete this?"}%> |
+    <% end %>
+    <%= link_to 'Notes', notes_url %> |
+    <%= link_to 'Back', :back %>
+</div>
+
+<br/>
+
+<div id="notes">
+    <%= render "comments/show" %>
+    <br/>
+    <%= render "comments/comment" %>
 </div>
