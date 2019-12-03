@@ -1,26 +1,38 @@
-<div id="landingPage"> 
-    <div class="row">
-        <div class="col-md-6">
-                    <h1> Welcome to StuddyBuddy</h1>
-                    <br>
-                    <p>Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <br>
-                    <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary btn-customized"%>
+
+
+
+<div class="d-md-flex h-md-100 align-items-center">
+
+    <!-- First Half -->
+    <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center fill">
+            <img src="" id="landImg">
+            <h1>add image in code</h1>
         </div>
-        <div class="col-md-6">
-            img here 
-        </div>
-        
     </div>
-</div>
 
-<div>
+    <div class="col-md-6 p-0 bg-indigo h-md-100">
+        <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+            <div class="logoarea pt-5 pb-5">
+                <h3 style="color:black">StuddyBuddy</h3>
+                <h1 style="font-weight:700; font-size: 3.5rem;">Welcome</h1>
+                <div class="col-12" style="margin-top:5vh;">
+                <% if user_signed_in? %>
+                    <%= link_to "Enter",  dashboard_index_path%>
+                <% else %>
+                    <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary btn-customized"%>
+                    <%= link_to "Sign In", new_user_session_path, :class => "btn btn-primary btn-customized"%>
+                <%end %>
+                </div>
+                <br>
+            <%= link_to '<i class="fab fa-facebook like"></i>'.html_safe, "http://www.facbook.com", target: "_blank"  %>
+            <%= link_to '<i class="fab fa-instagram like"></i>'.html_safe, "http://www.instagram.com", target: "_blank"  %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Half -->
+
     
-
-    <p>If you are signed in you will see a button that will take you to your dashboard, 
-        otherwise there will be no button</p>
-        <% if user_signed_in?%>
-            <button><a><%= link_to "Dashboard", dashboard_index_path%></a></button>
-        <% end %>
+    
 </div>
-
