@@ -1,13 +1,12 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
-  <div class="container">
-    
-    <div class="col-md-9 personal-info">
-      <h2>Log in</h2>
-      <form class="form-horizontal" role="form">
 
+  <div class="container">
+    <h2>Log in</h2>
+    <div class="col-md-9 personal-info">
+    
+      <form class="form-horizontal" role="form">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
         <div class="form-group">
             <label class="control-label">Email</label>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>

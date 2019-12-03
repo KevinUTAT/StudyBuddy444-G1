@@ -18,10 +18,9 @@
                   <div class="col-md-3">
                       <div class="text-center">
 
-                          <%= form.label "Profile Photo" %>
-                              <%= profile_picture(@page)%>
-                                  <%= form.label "Upload Photo" %>
-                                      <%= form.file_field :avatar %>
+                          <%= profile_picture(@page)%>
+                          <%= form.label "Upload Photo" %>
+                          <%= form.file_field :avatar %>
                       </div>
                   </div>
 
@@ -58,7 +57,7 @@
                                       <%= link_to "My Transcript", rails_blob_path(@page.transcript, disposition: 'preview') %>
                                       <%= link_to "Remove", controller: "pages", action: "delete_transcript", id: @page.id %>
                                   <%else%>
-                                      <%= form.file_field :transcript, class: "btn btn-primary" %>
+                                      <%= form.file_field :transcript%>
                                   <%end%>
                               </div>
                           </div>
