@@ -1,23 +1,53 @@
+</br>
+
+<% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
 <h1>
 Notes
-<button class="btn btn-outline-success my-2 my-sm-0"><a><%= link_to "New Note", new_note_path%></a></button>
+<button class="btn btn-light"><a><%= link_to "New Note", new_note_path%></a></button>
 </h1>
 
-<h3>Search by course:</h3>
-<%= form_tag(notes_path, method: :get) do %>
-    <%= text_field_tag(:search, params[:search]) %>
-    <%= submit_tag ("Search") %>
 
-<h3>Search by email:</h3>
-    <%= text_field_tag(:searchEmail, params[:searchEmail]) %>
-    <%= submit_tag ("Search") %>
+<p>
+<a class="btn btn-light" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
+Search options:
+</a>
+</p>
+<div class="collapse" id="collapse">
+    <%= form_tag(notes_path, method: :get) do %>
+    <h5>Search by course:
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= button_tag :submit do %>
+            <i class='material-icons'>search</i>
+        <% end %>
+    </h5>
+
+    <h5>Search by name:&nbsp;&nbsp;
+        <%= text_field_tag(:searchName, params[:searchName]) %>
+        <%= button_tag :submit do %>
+        <i class='material-icons'>search</i>
+        <% end %>
+    </h5>
+
+    <h5>Search by email:&nbsp;&nbsp;
+        <%= text_field_tag(:searchEmail, params[:searchEmail]) %>
+        <%= button_tag :submit do %>
+        <i class='material-icons'>search</i>
+        <% end %>
+    </h5>
+</div>
+
+<button class="btn btn-light"><a><%= link_to 'Clear Search', notes_url, :class => 'clearsearch' %></a></button>
+</br></br>
 
 <h3>Sort by:</h3>
 <p>
-    <th><%= togglesort "title", "Title" %></th>
-    <th><%= togglesort "course", "Course" %></th>
-    <th><%= togglesort "prof", "Professor" %></th>
-    <th><%= togglesort "created_at", "Created" %></th>
+    <th><%= togglesort "title", "Title" %></th> |
+    <th><%= togglesort "course", "Course" %></th> |
+    <th><%= togglesort "prof", "Professor" %></th> |
+    <th><%= togglesort "created_at", "Created" %></th> | 
     <th><%= togglesort "cached_votes_score", "Likes" %></th>
 </p>
 <% end %>
@@ -37,7 +67,7 @@ Notes
                         <%= link_to document.filename, rails_blob_path(document, disposition: 'preview'), target: :_blank, :class => 'link_to_color' %>
                     </p>
                 <% end %>
-                <p class="card-text"><%= link_to note.user.email, page_path(note.user.id), :class => 'link_to_color' %></p>
+                <p class="card-text">By <%= link_to note.user.page.name, page_path(note.user.id), :class => 'link_to_color' %></p>
                 <p class="card-text"><%= note.content %> </p>
 
                 <p>Likes: <%= note.cached_votes_score %>
@@ -51,7 +81,7 @@ Notes
                 </p>
             </div>
             <div class="card-footer">
-                <p class="card-text"><small class="text-muted">updated <%= time_ago_in_words(note.created_at)%> ago</small></p>
+                <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(note.created_at)%> ago</small></p>
 
             </div>
         </div>

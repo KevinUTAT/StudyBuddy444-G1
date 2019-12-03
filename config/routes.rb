@@ -48,4 +48,12 @@ Rails.application.routes.draw do
     get 'unlike' => 'notes#unlike'
     get 'dislike' => 'notes#dislike'
     get 'undislike' => 'notes#undislike'
+    
+    
+    resources :notes do
+        resources :comments
+    end
+    resources :users do
+        resources :comments
+    end
 end

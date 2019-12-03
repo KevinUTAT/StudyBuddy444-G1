@@ -17,6 +17,9 @@ class NotesController < ApplicationController
         if Note.searchEmail(params[:searchEmail])
             @notes = @notes.searchEmail(params[:searchEmail])
         end
+        if Note.searchName(params[:searchName])
+            @notes = @notes.searchName(params[:searchName])
+        end
     end
     
     def show
@@ -61,9 +64,9 @@ class NotesController < ApplicationController
         @note = Note.find(params[:id])
         @note.liked_by current_user
         if @note.vote_registered? == true
-            flash[:notice] = "Successfully liked this note."
+            flash[:success] = "Successfully liked this note."
         else
-            flash[:notice] = "You have already liked this note."
+            flash[:danger] = "You have already liked this note."
         end
         redirect_back(fallback_location: root_path)
     end
@@ -71,9 +74,9 @@ class NotesController < ApplicationController
         @note = Note.find(params[:id])
         @note.unliked_by current_user
         if @note.vote_registered? == false
-            flash[:notice] = "Successfully unliked this note."
+            flash[:success] = "Successfully unliked this note."
         else
-            flash[:notice] = "You cannot unlike this note."
+            flash[:danger] = "You cannot unlike this note."
         end
         redirect_back(fallback_location: root_path)
     end
@@ -82,9 +85,9 @@ class NotesController < ApplicationController
         @note = Note.find(params[:id])
         @note.disliked_by current_user
         if @note.vote_registered? == true
-            flash[:notice] = "Successfully disliked this note."
+            flash[:success] = "Successfully disliked this note."
             else
-            flash[:notice] = "You have already disliked this note."
+            flash[:danger] = "You have already disliked this note."
         end
         redirect_back(fallback_location: root_path)
     end
@@ -92,9 +95,9 @@ class NotesController < ApplicationController
         @note = Note.find(params[:id])
         @note.undisliked_by current_user
         if @note.vote_registered? == false
-            flash[:notice] = "Successfully undisliked this note."
+            flash[:success] = "Successfully undisliked this note."
             else
-            flash[:notice] = "You cannot undislike this note."
+            flash[:danger] = "You cannot undislike this note."
         end
         redirect_back(fallback_location: root_path)
     end
