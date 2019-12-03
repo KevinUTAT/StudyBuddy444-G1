@@ -1,18 +1,21 @@
-</br>
-
-<h1>Explore Study Groups</h1>
+<div class="col-12 text-center">
+<h1 class="dashtitle">Explore Study Groups</h1>
 <p>These are study groups that you are not a part of. Join any that interest you!</p>
-
+</div>
+<div class="container-fluid" style="width: 95vw;">
 <h3>Search by course:</h3>
 <%= form_tag(groups_path, method: :get) do %>
     <%= text_field_tag(:search, params[:search]) %>
     <%= submit_tag 'Search', name: nil, class:"btn btn-secondary" %>
 <% end %>
-
-</br>
+</div>
+<div class="col-12 text-right">
+<br>
+<br>
 <%= link_to "Create a new study group", { :action => "new" }, class:"btn btn-secondary" %>
-</br>
-</br>
+</div>
+<br>
+<div class="table-responsive">
 <table class="table">
     <thead class="thead-dark">
         <th scope="col"><h4>Lead</h4></th>
@@ -42,3 +45,4 @@
     <% end %>
 
 </table>
+</div>
