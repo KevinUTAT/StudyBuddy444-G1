@@ -40,7 +40,7 @@ Search options:
 </div>
 
 <button class="btn btn-light"><a><%= link_to 'Clear Search', notes_url, :class => 'clearsearch' %></a></button>
-</br></br>
+
 
 <h3>Sort by:</h3>
 <p>
@@ -70,10 +70,11 @@ Search options:
                 <% else %><%= (note.cached_votes_up.to_f/note.cached_votes_total.to_f * 100).round(2) %>
                 <% end %>%)
                 </p>
-                <p>
-                    <%= link_to '<i class="fas fa-heart"></i>'.html_safe,controller: "notes", action: "like", id: note.id  %>
-                    <%= link_to '<i class="fas fa-thumbs-down"></i>'.html_safe,controller: "notes", action: "dislike", id: note.id  %>
+                <p class="vote">
+                    <%= link_to '<i class="fas fa-heart like"></i>'.html_safe,controller: "notes", action: "like", id: note.id  %>
+                    <%= link_to '<i class="fas fa-thumbs-down dislike"></i>'.html_safe,controller: "notes", action: "dislike", id: note.id  %>
                 </p>
+                
             </div>
             <div class="card-footer">
                 <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(note.created_at)%> ago</small></p>
@@ -83,3 +84,4 @@ Search options:
     </div>
 <% end %>
 </div>
+

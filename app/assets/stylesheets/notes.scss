@@ -1,3 +1,37 @@
 // Place all the styles related to the Notes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+a{
+    &:hover{
+      color:#ff4081 !important;
+    }
+}
+
+ a i{
+    
+
+    color: !important
+}
+
+.vote a i {
+    
+
+    color:grey !important;
+}
+
+a .like{
+    &:hover{
+        color:#ff4081 !important;
+    }
+}
+
+
+
+ a .dislike{
+    &:hover{
+        color:red !important;
+    }
+}
