@@ -7,8 +7,7 @@ class PostsController < ApplicationController
 
     def index
         if params[:category].blank?
-            @validPosts = Post.where(is_accepting_applicants: true)
-            @posts = @validPosts.order("created_at DESC")
+            @posts = Post.all.order("created_at DESC")
         else 
             @category_id = Category.find_by(name: params[:category]).id
             @posts = Post.where(category_id: @category_id).order("created_at DESC")
@@ -66,7 +65,6 @@ class PostsController < ApplicationController
         applicant = @post.post_applications.where(id: applicant_id)
         if !applicant.empty?
             applicant.update_all(is_accepted: true)
-            @post.update_all(is_accepting_applicants: false)
             redirect_to post_path(@post), notice:"Accepted applicant"
         else
             redirect_back fallback_location: root_url
@@ -91,7 +89,7 @@ class PostsController < ApplicationController
     def checkout
         @post = Post.find(params[:postid])
         @app_id = params[:app_id]
-        @price = params
+        @price = params[:price]
     end
 
     def accept
