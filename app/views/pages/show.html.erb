@@ -2,7 +2,7 @@
 
 
 
-    <div class="row justify-content-center dashtitle" style="margin-top:20vh;">
+    <div class="row justify-content-center dashtitle" style=>
         <div class="col-12 text-center">
             <div class="card" style="border-radius:5px;">
                 <div class="avatar">
@@ -14,7 +14,6 @@
                     <p><%= @page.about_me %></p>
                     <p>
                     <%if current_user.id != @page.user_id %>
-                        <a href="#" class="btn btn-primary">Invite</a>
                     <%end%>
                     </p>
                 
@@ -30,13 +29,14 @@
             </div>
         </div>
     </div>
+    
 
 
 <h1 style="margin-top:7vh;">
 <%if current_user.id == @page.user_id %>
   <%= link_to 'Edit', edit_page_path(@page), class:"btn btn-primary" %> 
 <%else%>
-  <%= link_to 'Back', :back , class:"btn btn-primary"  %>
+  <a><%= link_to 'Back', :back , class:"btn btn-primary"  %></a>
 <%end%>
 </h1>
 

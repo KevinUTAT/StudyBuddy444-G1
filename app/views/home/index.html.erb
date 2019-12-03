@@ -16,7 +16,11 @@
                 <h1 style="font-weight:700; font-size: 3.5rem;">Welcome</h1>
                 <div class="col-12" style="margin-top:5vh;">
                 <% if user_signed_in? %>
+<<<<<<< Updated upstream
                     <h3><%= link_to "Enter",  dashboard_index_path%></h5>
+=======
+                    <a><%= link_to 'Enter', dashboard_index_path , class:"btn btn-primary"  %></a>
+>>>>>>> Stashed changes
                 <% else %>
                     <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary btn-customized"%>
                     <%= link_to "Sign In", new_user_session_path, :class => "btn btn-primary btn-customized"%>
