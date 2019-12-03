@@ -1,6 +1,10 @@
 module PagesHelper
 
     def profile_picture (page) 
+        if page == nil
+             return
+        end
+
         size = "128"
         
         if page.avatar.attached?
