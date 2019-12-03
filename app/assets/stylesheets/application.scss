@@ -14,8 +14,10 @@
  *= require_self
  */
 
+ @import "material";
+ @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
- @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700i&display=swap');
+
 
 body{
     font-family: 'Lato', sans-serif;
@@ -101,6 +103,19 @@ body{
 
 .notetitle{
     color:#B2BAC2;
+}
+
+.deletecomment{
+    float: right
+}
+
+.comment{
+    margin-top:0.5rem;
+    border-bottom: 1px solid;
+}
+
+.clearsearch{
+    color:#000000;
 }
 
 /* navbar start */

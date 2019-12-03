@@ -1,0 +1,13 @@
+<h2>Join the discussion:</h2>
+<%= form_with(model: [ @note, @note.comments.build ], local: true) do |form| %>
+    <p>
+        <%= form.text_area :body %>
+    </p>
+
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.hidden_field :username, :value => current_user.page.name %>
+
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>

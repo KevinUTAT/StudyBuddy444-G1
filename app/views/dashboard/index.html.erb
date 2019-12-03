@@ -81,48 +81,71 @@
 
 <h1>Your posted notes</h1>
 
-<div id="posts">
-<% current_user.notes.each do |note|%>
-    <h2><%= note.course %></h2>
-    <div class="post">
-    <h2 class="title"><%= link_to note.title, note %></h2>
-    <h4><%= note.content %> </h4>
+<div  class="row" >
+    <% current_user.notes.each do |note|%>
+    <div class="col-md-4 col-sm-6" style="margin-top:3vh;margin-bottom:3vh;">
+        <div class="card">
 
-    <% note.attachments.blobs.each do |document| %>
-    <p>
-    <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
-    </p>
-    <% end %>
+            <div class="card-body">
+                <h4><%= note.course %> - <%= note.prof %></h4>
+                <h2 class="title"><%= link_to note.title, note %></h2>
 
-    <p class="date"><%= time_ago_in_words(note.created_at)%> ago </p>
-    <p><%= note.user.email %></p>
+                <p class="card-text"><%= note.content %> </p>
+                <% note.attachments.blobs.each do |document| %>
+                    <p class="card-text">
+                        <%= link_to document.filename, rails_blob_path(document, disposition: 'preview'), target: :_blank, :class => 'link_to_color' %>
+                    </p>
+                <% end %>
+                <p class="card-text">By <%= link_to note.user.page.name, page_path(note.user.id), :class => 'link_to_color' %></p>
 
-    <p>Likes: <%= note.get_upvotes.size() %></p>
+
+                <p>Likes: <%= note.cached_votes_score %>
+                (<% if note.cached_votes_total == 0 %><%= note.cached_votes_up.to_f * 100 %>
+                <% else %><%= note.cached_votes_up.to_f/note.cached_votes_total.to_f * 100 %>
+                <% end %>%)
+                </p>
+            </div>
+            <div class="card-footer">
+                <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(note.created_at)%> ago</small></p>
+
+            </div>
+        </div>
     </div>
-<% end %>
+    <% end %>
 </div>
 
 <h1>Your liked notes</h1>
 
-<div id="posts">
-<% @notes.each do |note|%>
-    <% if current_user.voted_for? note %>
-        <h2><%= note.course %></h2>
-        <div class="post">
-        <h2 class="title"><%= link_to note.title, note %></h2>
-        <h4><%= note.content %> </h4>
+<div  class="row" >
+    <% @notes.each do |note|%>
+        <% if current_user.voted_up_on? note %>
+        <div class="col-md-4 col-sm-6" style="margin-top:3vh;margin-bottom:3vh;">
+            <div class="card">
 
-        <% note.attachments.blobs.each do |document| %>
-        <p>
-        <%= link_to document.filename, rails_blob_path(document, disposition: 'preview') %>
-        </p>
+                <div class="card-body">
+                    <h4><%= note.course %> - <%= note.prof %></h4>
+                    <h2 class="title"><%= link_to note.title, note %></h2>
+
+                    <p class="card-text"><%= note.content %> </p>
+                    <% note.attachments.blobs.each do |document| %>
+                        <p class="card-text">
+                            <%= link_to document.filename, rails_blob_path(document, disposition: 'preview'), target: :_blank, :class => 'link_to_color' %>
+                        </p>
+                    <% end %>
+                    <p class="card-text">By <%= link_to note.user.page.name, page_path(note.user.id), :class => 'link_to_color' %></p>
+
+                    <p>Likes: <%= note.cached_votes_score %>
+                    (<% if note.cached_votes_total == 0 %><%= note.cached_votes_up.to_f * 100 %>
+                    <% else %><%= note.cached_votes_up.to_f/note.cached_votes_total.to_f * 100 %>
+                    <% end %>%)
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(note.created_at)%> ago</small></p>
+
+                </div>
+            </div>
+        </div>
         <% end %>
-
-        <p class="date"><%= time_ago_in_words(note.created_at)%> ago </p>
-        <p><%= note.user.email %></p>
-
-        <p>Likes: <%= note.get_upvotes.size() %></p>
     <% end %>
-</div>
-<% end %>
 </div>

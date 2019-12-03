@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'notes/donate'
     get 'home/index'
     get 'home/aboutus'
+    get 'home/contact'
     get 'home/faq'
     get 'home/map'
     get 'home/privacy'
@@ -49,4 +50,12 @@ Rails.application.routes.draw do
     get 'unlike' => 'notes#unlike'
     get 'dislike' => 'notes#dislike'
     get 'undislike' => 'notes#undislike'
+    
+    
+    resources :notes do
+        resources :comments
+    end
+    resources :users do
+        resources :comments
+    end
 end
