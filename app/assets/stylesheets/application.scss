@@ -403,3 +403,15 @@ h1{
 .dashbutton{
     margin-top:5vh;
 }
+
+@media (max-width: 500px){
+    h1{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 800px){
+    h1{
+        font-size: 24px;
+    }
+}
