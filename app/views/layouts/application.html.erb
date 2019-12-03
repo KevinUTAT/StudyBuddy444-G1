@@ -126,11 +126,9 @@
 
 
       <%# end navbar %>
-      <%# <div class="container mx-auto" style="width: 90vw;"> %>
-      <div>
+      <div class="container mx-auto" style="width: 90vw;">
          <%= yield %>
       </div>
-      <%# </div> %>
 
 
       <script>
@@ -168,54 +166,17 @@
                   $('html, body').stop().animate({scrollTop: scroll_to}, 1000);
                }
             }
-
             $('.to-top a').on('click', function(e) {
                e.preventDefault();
                if($(window).scrollTop() != 0) {
                   $('html, body').stop().animate({scrollTop: 0}, 1000);
                }
             });
-
             
             
-
  
          });
-      
-      <footer class="footer footer-default">
-         <div class="container">
-           <nav class="float-left">
-             <ul>
-               <li>
-               <%= link_to 'About Us', dashboard_index_path %>
-               </li>
-               <li>
-               <%= link_to 'Site Map', dashboard_index_path %>
-               </li>
-               <li>
-               <%= link_to 'FAQ', dashboard_index_path %>
-               </li>
-               <li>
-               <%= link_to 'Contact Us', dashboard_index_path %>
-               </li>
-               <li>
-               <%= link_to 'Terms of Service', dashboard_index_path %>
-               </li>
-               <li>
-               <%= link_to 'Privacy Policy', dashboard_index_path %>
-               </li>
-             </ul>
-           </nav>
-           <div class=" float-right">
-             &copy;
-             <script>
-               document.write(new Date().getFullYear())
-             </script>, made with <i class="material-icons">favorite</i> by
-           </div>
-         </div>
-       </footer>
     
-
       </script>
      
       <!-- Optional JavaScript -->
