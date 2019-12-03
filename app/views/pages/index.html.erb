@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 <div class="row">
 <div class="col-12 text-center dashtitle">
-<h1>Profiles</h1>
+<h1>Buddies</h1>
 </div>
 </div>
 <h5>Connect with other students for homework help!</h5>
 
-    <%= text_field_tag :search, params[:search], class:"form-control"%>
-    <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
 
+<form class="form-inline my-2 my-lg-0" >
+<%= text_field_tag :search, params[:search], class:"form-control"%>
+<%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
 </form>
 </div>
 </div>
@@ -34,10 +35,6 @@
           </div>
 <% end %>
 </div>
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
 
 
