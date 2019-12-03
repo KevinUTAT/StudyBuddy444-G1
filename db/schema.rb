@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_233729) do
+ActiveRecord::Schema.define(version: 2019_12_03_070804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_233729) do
     t.integer "user_id"
     t.integer "category_id"
     t.boolean "is_accepting_applicants", default: true
+    t.float "price"
   end
 
   create_table "users", force: :cascade do |t|

@@ -23,7 +23,7 @@ class Note < ApplicationRecord
     end
 
     def accept_donation(amount)
-        self.user.accept_donation_user(amount)
+        self.user.accept_donation_user(amount.to_f)
     end
 
     def self.searchEmail(search)

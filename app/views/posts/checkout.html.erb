@@ -1,13 +1,13 @@
 <h1>Check Out</h1>
 
-<% current_price = 69 %>
+<% current_price = @price %>
 
 <h2>$ <%= current_price %></h2>
 
 
 <body>
   <script
-    src="https://www.paypal.com/sdk/js?client-id=AR4bc1-7vGLLOMOyeoxKSx6v3qR0-dFTZxwAGoGI8Jh9mtw-f3hYe6FZNcKsrAuUGHV63r6zyjw5JXw3">
+    src="https://www.paypal.com/sdk/js?client-id=AR4bc1-7vGLLOMOyeoxKSx6v3qR0-dFTZxwAGoGI8Jh9mtw-f3hYe6FZNcKsrAuUGHV63r6zyjw5JXw3&currency=CAD">
   </script>
 
   <div id="paypal-button-container"></div>
