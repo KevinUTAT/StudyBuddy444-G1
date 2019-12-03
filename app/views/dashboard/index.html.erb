@@ -101,7 +101,7 @@
 
                 <p>Likes: <%= note.cached_votes_score %>
                 (<% if note.cached_votes_total == 0 %><%= note.cached_votes_up.to_f * 100 %>
-                <% else %><%= note.cached_votes_up.to_f/note.cached_votes_total.to_f * 100 %>
+                <% else %><%= (note.cached_votes_up.to_f/note.cached_votes_total.to_f * 100).round(2) %>
                 <% end %>%)
                 </p>
             </div>
@@ -127,16 +127,11 @@
                     <h2 class="title"><%= link_to note.title, note %></h2>
 
                     <p class="card-text"><%= note.content %> </p>
-                    <% note.attachments.blobs.each do |document| %>
-                        <p class="card-text">
-                            <%= link_to document.filename, rails_blob_path(document, disposition: 'preview'), target: :_blank, :class => 'link_to_color' %>
-                        </p>
-                    <% end %>
                     <p class="card-text">By <%= link_to note.user.page.name, page_path(note.user.id), :class => 'link_to_color' %></p>
 
                     <p>Likes: <%= note.cached_votes_score %>
                     (<% if note.cached_votes_total == 0 %><%= note.cached_votes_up.to_f * 100 %>
-                    <% else %><%= note.cached_votes_up.to_f/note.cached_votes_total.to_f * 100 %>
+                    <% else %><%= (note.cached_votes_up.to_f/note.cached_votes_total.to_f * 100).round(2) %>
                     <% end %>%)
                     </p>
                 </div>

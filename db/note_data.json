@@ -1,0 +1,100 @@
+[
+    {
+        "title": "Lecture 1",
+        "course": "ECE444",
+        "prof": "Michael Stumm",
+        "content": "Lecture 1 slides - Introduction",
+        "attachments": ["01 - intro - ECE444.pdf"]
+    },
+    {
+        "title": "Lecture 2",
+        "course": "ECE444",
+        "prof": "Michael Stumm",
+        "content": "Lecture 2 slides - Ruby",
+        "attachments": ["02 Ruby - ECE444.pdf", "02 Ruby Part 2 - ECE444.pdf"]
+    },
+    {
+        "title": "Lecture 4",
+        "course": "ECE444",
+        "prof": "Michael Stumm",
+        "content": "Lecture 4 slides - Client-side Processing",
+        "attachments": ["04 Client-side Processing Part 1 ECE444.pdf", "04 Client-side Processing Part 2 ECE444.pdf"]
+    },
+    {
+        "title": "Assignment 2",
+        "course": "ECE568",
+        "prof": "David Lie",
+        "content": "Assignment 2 - Cryptography and Exploits",
+        "attachments": ["2019FallECE568Assignment2.pdf"]
+    },
+    {
+        "title": "Lecture 13",
+        "course": "ECE568",
+        "prof": "David Lie",
+        "content": "Lecture 13 - SSL",
+        "attachments": ["Lecture 13 SSL.pdf"]
+    },
+    {
+        "title": "Lecture 5",
+        "course": "ECE444",
+        "prof": "Michael Stumm",
+        "content": "Lecture 5 slides - Advanced Rails",
+        "attachments": ["05 More advanced Rails - ECE444.pdf"]
+    },
+    {
+        "title": "Lecture 6",
+        "course": "ECE444",
+        "prof": "Michael Stumm",
+        "content": "Lecture 6 slides - Behavior driven design",
+        "attachments": ["06 Behavior-driven design - ECE444.pdf"]
+    },
+    {
+        "title": "Lecture 7",
+        "course": "ECE444",
+        "prof": "Michael Stumm",
+        "content": "Lecture 7 slides - Project Requirements",
+        "attachments": ["07 Project Requirements and Guidelines - ECE444.pdf"]
+    },
+    {
+        "title": "Lecture 14",
+        "course": "ECE568",
+        "prof": "David Lie",
+        "content": "Lecture 13 - Web Authentication",
+        "attachments": ["Lecture 14 Web Authentication.pdf"]
+    },
+    {
+        "title": "Balance Sheet",
+        "course": "ECE472",
+        "prof": "Ronald Vander Kraats",
+        "content": "Balance Sheet Calculator",
+        "attachments": ["Balance-Sheets-Example.xlsx"]
+    },
+    {
+        "title": "Tutorial 2",
+        "course": "ECE472",
+        "prof": "Ronald Vander Kraats",
+        "content": "Tutorial 2 - Chaptor 2 Questions and Solutions",
+        "attachments": ["Chapter 2a Tutorial Review Questions.pdf", "Chapter 2b Tutorial Review Questions.pdf"]
+    },
+    {
+        "title": "Problem Set 3",
+        "course": "ECE472",
+        "prof": "Ronald Vander Kraats",
+        "content": "Problem Set 3 - Questions and Solutions",
+        "attachments": ["PS #3 Fall, 2019.pdf", "PS #3 Fall, 2019 Solutions.pdf"]
+    },
+    {
+        "title": "Midterm 2019",
+        "course": "ECE568",
+        "prof": "David Lie",
+        "content": "Midterm 2019 Solutions",
+        "attachments": ["ECE568F-Midterm-2019-1-solns.pdf", "ECE568F-Midterm-2019-2-solns.pdf"]
+    },
+    {
+        "title": "Lecture 3",
+        "course": "ECE444",
+        "prof": "Michael Stumm",
+        "content": "Lecture 3 slides - Rails",
+        "attachments": ["03 Rails Part 1 - ECE444.pdf", "03 Rails Part 2 - ECE444.pdf"]
+    }
+]
