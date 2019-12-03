@@ -1,16 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Profiles</h1>
-<h5>Connect with other students for homework help!</h5>
+<div class="container-fluid" style="width: 99vw; margin-top:50px;">
+<div class="row justify-content-center">
+    <div class="col-12 text-center">
+<h1 class="dashtitle text-center">Buddies</h1>
+<p>Connect with other students for homework help!</p>
+<form class="form-inline " >
 
-<form class="form-inline my-2 my-lg-0" >
     <%= text_field_tag :search, params[:search], class:"form-control"%>
     <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+
 </form>
-<br/>
+</div>
+</div>
+</div>
 
-
-  <h2>Buddies: </h2>
 
 <% @pages.each do |page| %>
   <%next  if current_user.id == page.user_id %>
@@ -33,7 +37,7 @@
       </div>
   </div>
 <% end %>
-
+</div>
 
 
 
