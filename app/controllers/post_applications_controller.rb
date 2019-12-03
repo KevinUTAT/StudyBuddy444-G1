@@ -12,6 +12,7 @@ class PostApplicationsController < ApplicationController
     
         redirect_to post_path(@post), notice: 'Deleted a application'
     end
+    
 
     private
         def post_application_params
