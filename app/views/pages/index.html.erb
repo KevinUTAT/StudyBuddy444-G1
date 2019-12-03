@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
-
-<div class="container-fluid" style="width: 99vw; margin-top:50px;">
-<div class="row justify-content-center">
-    <div class="col-12 text-center">
-<h1 class="dashtitle text-center">Buddies</h1>
-<p>Connect with other students for homework help!</p>
-<form class="form-inline " >
+<div class="row">
+<div class="col-12 text-center dashtitle">
+<h1>Profiles</h1>
+</div>
+</div>
+<h5>Connect with other students for homework help!</h5>
 
     <%= text_field_tag :search, params[:search], class:"form-control"%>
     <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
@@ -16,11 +15,10 @@
 </div>
 
 
+<div class="row justify-content-center" style="margin-top:10vh;">
 <% @pages.each do |page| %>
   <%next  if current_user.id == page.user_id %>
-  <div class="container-fluid" style="width: 99vw; margin-top:100px;">
-      <div class="row justify-content-center">
-          <div class="col-12 text-center">
+          <div class="col-md-6 text-center" style="margin-top:20vh">
               <div class="card" style="border-radius:5px;">
                   <div class="avatar">
                       <td class="img-avatar"><%=profile_picture(page)%></td>
@@ -34,10 +32,12 @@
                   </div>
               </div>
           </div>
-      </div>
-  </div>
 <% end %>
 </div>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 
 
