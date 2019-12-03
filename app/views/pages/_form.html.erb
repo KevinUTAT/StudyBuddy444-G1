@@ -53,7 +53,7 @@
                                       </br>
                                   <%end%>
                                   <%= form.label "Upload Resume" %>
-                                  <%= form.file_field :resume %>
+                                  <%= form.file_field :resume, accept: 'application/pdf' %>
                               </div>
                           </div>
                           <div class="form-group">
@@ -64,7 +64,7 @@
                                       </br>
                                   <%end%>
                                   <%= form.label "Upload Transcript" %>
-                                  <%= form.file_field :transcript%>
+                                  <%= form.file_field :transcript, accept: 'application/pdf'%>
                               </div>
                           </div>
                           <div class="form-group">

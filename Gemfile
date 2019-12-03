@@ -61,3 +61,5 @@ gem 'bootstrap',     '4.1.1'
 gem 'material-sass', '4.1.1'
 gem 'jquery-rails'
 gem 'owlcarousel-rails'
+
+gem 'activestorage-validator'
