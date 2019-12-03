@@ -8,3 +8,44 @@ img {
     margin-right: 20px;
     margin-bottom: 20px;
 }
+body {
+    padding-top: 40px;
+  }
+  
+  .col-sm-6 {
+  }
+  
+  .other {
+    background: #88B040;
+  }
+  
+  .other2 {
+    background: #777;
+  }
+  
+  .p {
+    text-align: center;
+    padding-top: 120px;
+  }
+  
+  .p a {
+    text-decoration: underline;
+    color: blue;
+  }
+
+//   headers
+
+.buddyName{
+    font-size:2rem;
+    font-weight:700;
+}
+
+.avatar img{
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+    transform: translate3d(0,-50%,0);
+    box-shadow:0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+    width: 128px;
+    height:128px;
+}
