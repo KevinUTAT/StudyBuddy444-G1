@@ -1,3 +1,4 @@
+<br>
 <div class="row">
     <div class="col-12 text-center">
     
@@ -10,7 +11,7 @@
 <% if @groups_created.empty?%>
     <div class="col-12 text-center">
         <h1 style="margin-top:5vh;">Looks like your not hosting any group sessions :(</h1>
-        <%= link_to 'Create study group', new_group_path, class:"btn btn-secondary"%>
+        <%= link_to 'Create study group', new_group_path, class: "btn btn-light dashbutton"%>
 
     </div>
 
@@ -63,7 +64,7 @@
     <% if @groups_joined.empty?%>
     <div class="col-12 text-center">
         <h1 style="margin-top:5vh;">Looks like your not a member of any group sessions :(</h1>
-        <%= link_to 'Explore more study groups', groups_path, class:"btn btn-secondary"%>
+        <%= link_to 'Explore more study groups', groups_path, class: "btn btn-light dashbutton"%>
 
     </div>
 
@@ -102,7 +103,7 @@
         </tbody>
     </table>
     </div>
-        <%= link_to 'Explore more study groups', groups_path, class:"btn btn-secondary"%>
+        <%= link_to 'Explore more study groups', groups_path, class:"btn btn-light dashbutton"%>
 
 <%end %>
 
@@ -111,7 +112,7 @@
 <% if current_user.notes.empty?%>
     <div class="col-12 text-center">
         <h1 style="margin-top:5vh;">Help our community grow by posting notes!</h1>
-        <%= link_to 'Create Notes', new_note_path, class:"btn btn-secondary"%>
+        <%= link_to 'Create Notes', new_note_path, class:"btn btn-light dashbutton"%>
     </div>
 <% else %>
 <h1>Your posted notes</h1>

@@ -1,10 +1,35 @@
-<div class="col-12 text-center">
-  <h1><%= @post.title %></h1>
-  <h1><%= @post.content %></h1>
-  <h1><%= @post.limit %></h1>
-  <h2>Price: <%= @post.price %></h2>
 
-  <% if current_user  == @post.user %>
+
+<div  class="row dashtitle" >
+    <div class="col-12" style="margin-top:8vh;">
+        <div class="card">
+            
+            <div class="card-body">
+                
+
+
+                <p class="card-text"><h1><%= @post.title %></p>
+                <p class="card-text"><%= @post.content %></p>
+
+                <p class="card-text">Price: <%= @post.price %></p>
+                <p class="card-text"><small class="text-muted"><%= @post.user.email %></small></p>
+
+
+
+            </div>
+            <div class="card-footer">
+                <p class="card-text"><small class="text-muted">updated <%= time_ago_in_words(@post.created_at)%> ago</small></p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+  <div class="col-12 text-center dashtitle">
+    <% if current_user  == @post.user %>
+      <h1 class="page_title">Applicants to this Job:</h1>
       <br>
       <br>
       <h1 class="page_title">Applicants to this Job:</h1>
@@ -24,21 +49,27 @@
 
       <%= link_to 'edit', edit_post_path(@post)%>
       <%= link_to 'delete', post_path(@post), method: :delete, data: {confirm: "are you sure you want to delte this?"} %>
-  <% else%>
+    <%else%>
       <% app = @post.post_applications.where(user_id: current_user.id).last %>
       <% if app.blank? %>
           <%= form_with(model: [ @post, @post.post_applications.new ], local: true) do |form| %>
             <%= form.hidden_field :user_id, value: current_user.id %>
             <%= form.submit %>
           <% end %>
+        
       <% else %>
           <%= button_to 'Cancel Job Application',
           post_post_application_path(@post, app),
           method: :delete,
           data: {confirm: 'Are you sure?'} %>
       <% end %>
-
-  <% end %>
-
-  <%= link_to "home", root_path %>
+    <%end %>
+  </div>
 </div>
+<div class="row">
+<div class="col-12 text-center dashbutton">
+
+ <button class="btn btn-light"><a><%= link_to "home", root_path %></a></button>
+ </div>
+</div>
+
