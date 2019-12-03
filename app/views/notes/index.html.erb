@@ -1,16 +1,21 @@
-</br>
 
 <% flash.each do |key, value| %>
     <div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
-
+<div class="row">
+<div class="col-12 text-center dashtitle">
 <h1>
 Notes
-<button class="btn btn-light"><a><%= link_to "New Note", new_note_path%></a></button>
 </h1>
+<button class="btn btn-light"><a><%= link_to "New Note", new_note_path%></a></button>
 
+</div>
+</div>
+
+<div class="col-12 text-center dashtitle">
 
 <p>
+
 <a class="btn btn-light" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">
 Search options:
 </a>
@@ -41,7 +46,13 @@ Search options:
 
 <button class="btn btn-light"><a><%= link_to 'Clear Search', notes_url, :class => 'clearsearch' %></a></button>
 
+</div>
 
+<br>
+<br>
+<div class="row">
+<div class="col-2 col-md-1"></div>
+<div class="col-md-11 col-10 text-left">
 <h3>Sort by:</h3>
 <p>
     <th><%= togglesort "title", "Title" %></th> |
@@ -51,8 +62,8 @@ Search options:
     <th><%= togglesort "cached_votes_score", "Likes" %></th>
 </p>
 <% end %>
-
-
+</div>
+</div>
 <div  class="row" >
 <% @notes.each do |note|%>
     <div class="col-md-4 col-sm-6" style="margin-top:3vh;margin-bottom:3vh;">

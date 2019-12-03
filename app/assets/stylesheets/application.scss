@@ -166,20 +166,19 @@ body{
 
 /***** Dark overlay *****/
  
-.overlay {
-    display: none;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(51, 51, 51, 0.7);
-    z-index: 998;
-    opacity: 0;
-    transition: all .5s ease-in-out;
-}
- 
-.overlay.active {
-    display: block;
-    opacity: 1;
+
+@media (max-width: 400px){
+    a.btn-customized{
+        background-color:transparent !important;
+        i{
+            color:black;
+        }
+    }
+
+    .open-menu.btn-customized{
+        box-shadow: none !important;
+
+    }
 }
 
 .open-menu {
@@ -395,4 +394,12 @@ h1{
 
 .loginarea{
     background-color:black;
+}
+
+.dashtitle{
+    margin-top: 8vh;
+}
+
+.dashbutton{
+    margin-top:5vh;
 }

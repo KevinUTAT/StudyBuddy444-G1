@@ -1,15 +1,26 @@
-<h1 style="margin-top:100px;">Dashboard</h1>
-<p>This is going to be the central hub for all the services a user can access on the website</p>
-<p>For each of the Notes, Groups, Tutors categories, it will have all the CRUD functionalities</p>
-<% if user_signed_in? %>
-      <h2>Welcome to your dashboard, <strong><%= current_user.page.name %></strong>.</h2>
-      <h3>Current Balance: <strong>$<%= current_user.balance %></strong></h3>
-<% end %>
-</br>
+<br>
+<div class="row">
+    <div class="col-12 text-center">
+    
+    <% if user_signed_in? %>
+        <h2 style="margin-top:10vh">Welcome to your dashboard, <strong><%= current_user.page.name %></strong>.</h2>
+        <h3>Current Balance: <strong>$<%= current_user.balance %></strong></h3>
+    <% end %>
+    </div>
+</div>
+<% if @groups_created.empty?%>
+    <div class="col-12 text-center">
+        <h1 style="margin-top:5vh;">Looks like your not hosting any group sessions :(</h1>
+        <%= link_to 'Create study group', new_group_path, class: "btn btn-light dashbutton"%>
 
-<h1>Groups you created:</h1>
+    </div>
 
-<table class="table">
+
+<%else%>
+    <h1>Groups you created:</h1>
+    <br>
+    <div class="table-responsive">
+    <table class="table">
     <thead class="thead-dark">
         <th scope="col"><h6>Lead</h6></th>
         <th scope="col"><h6>Course</h6></th>
@@ -23,6 +34,7 @@
     </thead>
 
     <tbody>
+        
         <% @groups_created.each do |group| %>
             <tr>
                 <td><%= group.user.page.name %></td>
@@ -39,46 +51,70 @@
         <% end %>
     </tbody>
 </table>
+</div>
+<%end %>
+
+
+
+
 
 <br>
+<br>
 
-<h1>Groups you joined:</h1>
+    <% if @groups_joined.empty?%>
+    <div class="col-12 text-center">
+        <h1 style="margin-top:5vh;">Looks like your not a member of any group sessions :(</h1>
+        <%= link_to 'Explore more study groups', groups_path, class: "btn btn-light dashbutton"%>
 
-<table class="table">
-    <thead class="thead-dark">
-        <th scope="col"><h6>Lead</h6></th>
-        <th scope="col"><h6>Course</h6></th>
-        <th scope="col"><h6>Description</h6></th>
-        <th scope="col"><h6>Date</h6></th>
-        <th scope="col"><h6>Time</h6></th>
-        <th scope="col"><h6>Duration (hrs)</h6></th>
-        <th scope="col"><h6>Location</h6></th>
-        <th scope="col"><h6>Capacity</h6></th>
-        <th scope="col"><h6>Expand</h6></th>
-    </thead>
+    </div>
 
-    <tbody>
-        <% @groups_joined.each do |group| %>
-            <tr>
-                <td><%= group.user.page.name %></td>
-                <td><%= group.category %></td>
-                <td><%= group.description %></td>
-                <td><%= group.date %></td>
-                <td><%= group.time.to_s(:time) %></td>
-                <td><%= group.duration %></td>
-                <td><%= group.location %></td>
-                <td><%= group.capacity %></td>
-                <td><%= link_to 'Show', group %></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+<%else%>
 
-<%= link_to 'Explore more study groups', groups_path, class:"btn btn-secondary"%>
-</br>
-</br>
-</br>
 
+    <h1>Groups you joined:</h1>
+    <div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+            <th scope="col"><h6>Lead</h6></th>
+            <th scope="col"><h6>Course</h6></th>
+            <th scope="col"><h6>Description</h6></th>
+            <th scope="col"><h6>Date</h6></th>
+            <th scope="col"><h6>Time</h6></th>
+            <th scope="col"><h6>Duration (hrs)</h6></th>
+            <th scope="col"><h6>Location</h6></th>
+            <th scope="col"><h6>Capacity</h6></th>
+            <th scope="col"><h6>Expand</h6></th>
+        </thead>
+
+        <tbody>
+            <% @groups_joined.each do |group| %>
+                <tr>
+                    <td><%= group.user.page.name %></td>
+                    <td><%= group.category %></td>
+                    <td><%= group.description %></td>
+                    <td><%= group.date %></td>
+                    <td><%= group.time.to_s(:time) %></td>
+                    <td><%= group.duration %></td>
+                    <td><%= group.location %></td>
+                    <td><%= group.capacity %></td>
+                    <td><%= link_to 'Show', group %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+        <%= link_to 'Explore more study groups', groups_path, class:"btn btn-light dashbutton"%>
+
+<%end %>
+
+<br>
+<br>
+<% if current_user.notes.empty?%>
+    <div class="col-12 text-center">
+        <h1 style="margin-top:5vh;">Help our community grow by posting notes!</h1>
+        <%= link_to 'Create Notes', new_note_path, class:"btn btn-light dashbutton"%>
+    </div>
+<% else %>
 <h1>Your posted notes</h1>
 
 <div  class="row" >
@@ -113,13 +149,13 @@
     </div>
     <% end %>
 </div>
+<%end %>
 
-</br>
-</br>
-</br>
-
+<br>
+<br>
+<div class="col-12 text-center" style="margin-top:5vh;">
 <h1>Your liked notes</h1>
-
+</div>
 <div  class="row" >
     <% @notes.each do |note|%>
         <% if current_user.voted_up_on? note %>
@@ -149,12 +185,18 @@
     <% end %>
 </div>
 
-<h1>Your Job Postings</h1>
+<br>
+<br>
 
 <% if current_user.posts.empty? %>
+<div class="col-12 text-center">
     <h1>Seems like you need a Buddy.  <%= link_to 'Create Job', '/posts/new' %><h1>
+</div>
 <% else %>
+<div class="col-12 text-center">
     <h1>Your Jobs: </h1>
+</div>
+
 <%end %>
 
 <div  class="row" >
@@ -183,9 +225,14 @@
 
 
 <% if @jobs.empty? %>
+    <div class="col-12 text-center dashtitle">
     <h1>You have no Job offers.  <%= link_to 'Apply', '/posts/' %><h1>
+    </div>
 <% else %>
+    <div class="col-12 text-center dash-title">
+
     <h1>Your Jobs: </h1>
+    </div>
 <%end %>
 
 
@@ -220,10 +267,15 @@
 
 
 <% if @pending.empty? %>
-    <h1>You have no pending applications. <%= link_to 'Apply', '/posts/' %><h1>
+    <div class="col-12 text-center dashtitle">
 
+    <h1>You have no pending applications. <%= link_to 'Apply', '/posts/' %><h1>
+    </div>
 <% else %>
+    <div class="col-12 text-center dashtitle">
+
     <h1>Pending Applications:</h1>
+    </div>
 <%end %>
 <div  class="row" >
     <% @pending.each do |app|%>

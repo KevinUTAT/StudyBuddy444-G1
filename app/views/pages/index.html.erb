@@ -19,12 +19,13 @@
           <div class="col-12 text-center">
               <div class="card" style="border-radius:5px;">
                   <div class="avatar">
-                      <td class="img-avatar"><%=profile_picture(@page)%></td>
+                      <td class="img-avatar"><%=profile_picture(page)%></td>
                   </div>
                   <div class="card-body">
-                      <h1 style="color:#3c4858;"><%= @page.name %></h1>
-                      <p><%= @page.user.email%></p>
-                      <p><%= @page.about_me %></p>
+                      <h1 style="color:#3c4858;"><%= link_to page.name, page %></h1>
+                      
+                      <p><%= page.user.email%></p>
+                      <p><%= page.about_me %></p>
                       <a href="#" class="btn btn-primary">Invite</a>
                   </div>
               </div>

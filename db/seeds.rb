@@ -17,19 +17,27 @@ for userData in users do
     url = userData["photo"]
     filename = File.basename(URI.parse(url).path)
     file = URI.open(url)
+
+    page = Page.new(name: userData["name"], user_id: "1",)
     
     user = User.create!(
-                        email: userData["email"],
-                        password: "password",
-                        password_confirmation: "password",
-                        balance: 0
-                        )
-                        
-    page = Page.create!(
-                        name: userData["name"],
-                        about_me: userData["position"],
-                        user_id: user.id,
-                        )
+            name: userData["name"],
+            email: userData["email"],
+            password: "password",
+            password_confirmation: "password",
+            balance: 0,
+            page: page
+            )
+
+    user.page.update!(
+        name: userData["name"],
+        about_me: userData["position"],
+        user_id: user.id,
+    )
+
+    page = user.page
+    page.save!
+    
 
     page.avatar.attach(io: file, filename: filename)
                                             
