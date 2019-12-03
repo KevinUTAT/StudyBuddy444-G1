@@ -27,8 +27,14 @@ a {
   }
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: #ff4081;
+    background-color: transparent;
+  }
+}
+
+.like a i {
+  &:hover{
+    color:red;
   }
 }
 
