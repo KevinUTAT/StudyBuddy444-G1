@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
     before_action :find_post, only: [:show, :edit, :update, :destroy]
     # only signed in can create posts
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show, :checkout]
     before_action :require_permission, only: [:edit, :update, :destroy]
 
 
@@ -65,11 +65,9 @@ class PostsController < ApplicationController
         applicant = @post.post_applications.where(id: applicant_id)
         if !applicant.empty?
             applicant.update_all(is_accepted: true)
-            
-
             redirect_to post_path(@post), notice:"Accepted applicant"
         else
-            redirect_back root_url
+            redirect_back fallback_location: root_url
         end
 
     end
@@ -83,9 +81,21 @@ class PostsController < ApplicationController
             redirect_to post_path(@post), notice:"Unaccepted applicant"
 
         else
-            redirect_back root_url
+            redirect_back fallback_location: root_url
         end
 
+    end
+
+    def checkout
+        @post = Post.find(params[:postid])
+        @app_id = params[:app_id]
+    end
+
+    def accept
+        @post = Post.find(params[:postid])
+        @app_id = params[:app_id]
+        @applicant = @post.post_applications.where(id: params[:app_id])[0]
+        @amount = params[:amount]
     end
 
 

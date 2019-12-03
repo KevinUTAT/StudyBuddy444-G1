@@ -8,7 +8,7 @@ Rails.application.routes.draw do
         end
     end
     get 'dashboard/index'
-    get 'dashboard/checkout'
+    #get 'posts/checkout'
     get 'notes/donate'
     get 'home/index'
     get 'home/aboutus'
@@ -27,11 +27,13 @@ Rails.application.routes.draw do
       member do 
         patch 'accept_applicant'
         patch 'unaccept_applicant'
+        get 'checkout'
+        get 'accept'
         # post 'pay_teenager'
       end
     end
 
-    
+    get 'posts/checkout'
     get 'delete_resume' => 'pages#delete_resume'
     get 'delete_transcript' => 'pages#delete_transcript'
 

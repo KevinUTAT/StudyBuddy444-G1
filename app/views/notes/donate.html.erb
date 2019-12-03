@@ -1,7 +1,6 @@
 <h1>Donate</h1>
 
 <p>Enter Donation Amount</p>
-<%= donation_amount = 1 %>
 
 <p><select type="int" id="donate_amount" onchange="show_payment()">
 <option value=1>select_amount</option>
@@ -36,10 +35,14 @@
       onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
           alert('Transaction completed by ' + details.payer.name.given_name);
-          var ruby_caller = <%= @note.accept_donation(1) %>
-          //var ruby_caller2 = <%= link_to 'back', :back %>
+          $(document).ready(function(){
+            $("#js_field").val(js_price);
+          });
+          var dum_var = <%= @note.accept_donation(1) %>
+          window.history.back();
         });
       }
     }).render('#paypal-button-container');
   }
   </script>
+
