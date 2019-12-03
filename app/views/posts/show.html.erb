@@ -1,42 +1,44 @@
-<h1><%= @post.title %></h1>
-<h1><%= @post.content %></h1>
-<h1><%= @post.limit %></h1>
-<h2>Price: <%= @post.price %></h2>
+<div class="col-12 text-center">
+  <h1><%= @post.title %></h1>
+  <h1><%= @post.content %></h1>
+  <h1><%= @post.limit %></h1>
+  <h2>Price: <%= @post.price %></h2>
 
-<% if current_user  == @post.user %>
-    <br>
-    <br>
-    <h1 class="page_title">Applicants to this Job:</h1>
-    <% @apps = @post.post_applications.includes(:user)%>
-    <% @apps.order("created_at DESC").each do |app| %>
-      <li>
-        <%= app.user.email %>
-        <% if !app.is_accepted %>
-          <%= link_to "Accept and pay", checkout_post_path(postid: @post.id, app_id: app.id, price: @post.price) %>
-        <% else %>
-          <%= link_to "Unaccept", unaccept_applicant_post_path(@post, :post_application_id => app.id), method: :patch %>
-        <% end %>
-      </li>
+  <% if current_user  == @post.user %>
       <br>
-    <% end %>
+      <br>
+      <h1 class="page_title">Applicants to this Job:</h1>
+      <% @apps = @post.post_applications.includes(:user)%>
+      <% @apps.order("created_at DESC").each do |app| %>
+        <li>
+          <%= app.user.email %>
+          <% if !app.is_accepted %>
+            <%= link_to "Accept and pay", checkout_post_path(postid: @post.id, app_id: app.id, price: @post.price) %>
+          <% else %>
+            <%= link_to "Unaccept", unaccept_applicant_post_path(@post, :post_application_id => app.id), method: :patch %>
+          <% end %>
+        </li>
+        <br>
+      <% end %>
 
 
-    <%= link_to 'edit', edit_post_path(@post)%>
-    <%= link_to 'delete', post_path(@post), method: :delete, data: {confirm: "are you sure you want to delte this?"} %>
-<% else%>
-    <% app = @post.post_applications.where(user_id: current_user.id).last %>
-    <% if app.blank? %>
-        <%= form_with(model: [ @post, @post.post_applications.new ], local: true) do |form| %>
-          <%= form.hidden_field :user_id, value: current_user.id %>
-          <%= form.submit %>
-        <% end %>
-    <% else %>
-        <%= button_to 'Cancel Job Application',
-        post_post_application_path(@post, app),
-        method: :delete,
-        data: {confirm: 'Are you sure?'} %>
-    <% end %>
+      <%= link_to 'edit', edit_post_path(@post)%>
+      <%= link_to 'delete', post_path(@post), method: :delete, data: {confirm: "are you sure you want to delte this?"} %>
+  <% else%>
+      <% app = @post.post_applications.where(user_id: current_user.id).last %>
+      <% if app.blank? %>
+          <%= form_with(model: [ @post, @post.post_applications.new ], local: true) do |form| %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+            <%= form.submit %>
+          <% end %>
+      <% else %>
+          <%= button_to 'Cancel Job Application',
+          post_post_application_path(@post, app),
+          method: :delete,
+          data: {confirm: 'Are you sure?'} %>
+      <% end %>
 
-<% end %>
+  <% end %>
 
-<%= link_to "home", root_path %>
+  <%= link_to "home", root_path %>
+</div>
