@@ -151,6 +151,12 @@
 
 <h1>Your Job Postings</h1>
 
+<% if current_user.posts.empty? %>
+    <h1>Seems like you need a Buddy.  <%= link_to 'Create Job', '/posts/new' %><h1>
+<% else %>
+    <h1>Your Jobs: </h1>
+<%end %>
+
 <div  class="row" >
     <% current_user.posts.each do |post|%>
 
@@ -176,8 +182,12 @@
 </div>
 
 
+<% if @jobs.empty? %>
+    <h1>You have no Job offers.  <%= link_to 'Apply', '/posts/' %><h1>
+<% else %>
+    <h1>Your Jobs: </h1>
+<%end %>
 
-<h1>Your Jobs<h1>
 
 <div  class="row" >
     <% @jobs.each do |app|%>
@@ -209,9 +219,12 @@
 
 
 
+<% if @pending.empty? %>
+    <h1>You have no pending applications. <%= link_to 'Apply', '/posts/' %><h1>
 
-<h1>Your Pending Applications<h1>
-
+<% else %>
+    <h1>Pending Applications:</h1>
+<%end %>
 <div  class="row" >
     <% @pending.each do |app|%>
         <% post = app.post %>
