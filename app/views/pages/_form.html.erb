@@ -43,22 +43,22 @@
                               <label class="col-lg-3 control-label">Resume:</label>
                               <div class="col-lg-8 control-label">
                                   <% if @page.resume.attached? %>
-                                      <%= link_to "My Resume", rails_blob_path(@page.resume, disposition: 'preview') %>
-                                      <%= link_to "Remove", controller: "pages", action: "delete_resume", id: @page.id %>
-                                  <%else%>
-                                      <%= form.file_field :resume %>
+                                      <%= link_to "my_resume.pdf", rails_blob_path(@page.resume, disposition: 'preview') %>
+                                      </br>
                                   <%end%>
+                                  <%= form.label "Upload Resume" %>
+                                  <%= form.file_field :resume %>
                               </div>
                           </div>
                           <div class="form-group">
                               <label class="col-lg-3 control-label">Transcript:</label>
                               <div class="col-lg-8 control-label">
                                   <% if @page.transcript.attached? %>
-                                      <%= link_to "My Transcript", rails_blob_path(@page.transcript, disposition: 'preview') %>
-                                      <%= link_to "Remove", controller: "pages", action: "delete_transcript", id: @page.id %>
-                                  <%else%>
-                                      <%= form.file_field :transcript%>
+                                      <%= link_to "my_transcript.pdf", rails_blob_path(@page.transcript, disposition: 'preview') %>
+                                      </br>
                                   <%end%>
+                                  <%= form.label "Upload Transcript" %>
+                                  <%= form.file_field :transcript%>
                               </div>
                           </div>
                           <div class="form-group">
