@@ -89,6 +89,7 @@ class PostsController < ApplicationController
     def checkout
         @post = Post.find(params[:postid])
         @app_id = params[:app_id]
+        @price = params
     end
 
     def accept
@@ -107,7 +108,7 @@ class PostsController < ApplicationController
 
 
     def post_params
-        params.require(:post).permit(:title, :content, :limit, :category_id, :is_accepting_applicants)
+        params.require(:post).permit(:title, :content, :limit, :category_id, :is_accepting_applicants, :price)
     end
     
     def require_permission

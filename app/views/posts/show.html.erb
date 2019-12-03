@@ -1,6 +1,7 @@
 <h1><%= @post.title %></h1>
 <h1><%= @post.content %></h1>
 <h1><%= @post.limit %></h1>
+<h2>Price: <%= @post.price %></h2>
 
 <% if current_user  == @post.user %>
     <br>
@@ -11,7 +12,7 @@
       <li>
         <%= app.user.email %>
         <% if !app.is_accepted %>
-          <%= link_to "Accept and pay", checkout_post_path(postid: @post.id, app_id: app.id) %>
+          <%= link_to "Accept and pay", checkout_post_path(postid: @post.id, app_id: app.id, price: @post.price) %>
         <% else %>
           <%= link_to "Unaccept", unaccept_applicant_post_path(@post, :post_application_id => app.id), method: :patch %>
         <% end %>
