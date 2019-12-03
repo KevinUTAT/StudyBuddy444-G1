@@ -148,3 +148,92 @@
         <% end %>
     <% end %>
 </div>
+
+<h1>Your Job Postings</h1>
+
+<div  class="row" >
+    <% current_user.posts.each do |post|%>
+
+        <div class="col-md-4 col-sm-6" style="margin-top:3vh;margin-bottom:3vh;">
+            <div class="card">
+
+                <div class="card-body">
+                    
+                    <h2 class="card-title title"><%= link_to post.title, post %></h2>
+
+                    <p class="card-text"><%= post.content %></p>
+                    <p class="card-text"><%= post.limit %></p>
+                    <p class="card-text"><small class="text-muted"><%= post.user.email %></small></p>
+                    
+                </div>
+                <div class="card-footer">
+                    <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(post.created_at)%> ago</small></p>
+
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+
+
+<h1>Your Jobs<h1>
+
+<div  class="row" >
+    <% @jobs.each do |app|%>
+        <% post = app.post %>
+
+        <div class="col-md-4 col-sm-6" style="margin-top:3vh;margin-bottom:3vh;">
+            <div class="card">
+
+                <div class="card-body">
+                    
+                    <h2 class="card-title title"><%= link_to post.title, post %></h2>
+
+                    <p class="card-text"><%= post.content %></p>
+                    <p class="card-text"><%= post.limit %></p>
+                    <p class="card-text"><small class="text-muted"><%= post.user.email %></small></p>
+                    
+                </div>
+                <div class="card-footer">
+                    <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(post.created_at)%> ago</small></p>
+
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+
+
+
+
+
+
+<h1>Your Pending Applications<h1>
+
+<div  class="row" >
+    <% @pending.each do |app|%>
+        <% post = app.post %>
+        <div class="col-md-4 col-sm-6" style="margin-top:3vh;margin-bottom:3vh;">
+            <div class="card">
+
+                <div class="card-body">
+                    <h1><%= app.id %></h1>
+                    <h2 class="card-title title"><%= link_to post.title, post %></h2>
+
+                    <p class="card-text"><%= post.content %></p>
+                    <p class="card-text"><%= post.limit %></p>
+                    <p class="card-text"><small class="text-muted"><%= post.user.email %></small></p>
+                    
+                </div>
+                <div class="card-footer">
+                    <p class="card-text"><small class="text-muted">Created <%= time_ago_in_words(post.created_at)%> ago</small></p>
+
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+
