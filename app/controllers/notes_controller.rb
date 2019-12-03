@@ -107,6 +107,10 @@ class NotesController < ApplicationController
         @note = Note.find(params[:noteid])
     end
 
+    def accept
+        @note = Note.find(params[:noteid])
+    end
+
     
     private
     

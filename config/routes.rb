@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'dashboard/index'
     #get 'posts/checkout'
     get 'notes/donate'
+    get 'notes/accept'
     get 'home/index'
     get 'home/aboutus'
     get 'home/contact'
