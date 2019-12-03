@@ -40,13 +40,14 @@
                 <td><%= group.user.page.name %></td>
                 <td><%= group.category %></td>
                 <td><%= group.description %></td>
-                <td><%= group.time %></td>
+                <td><%= group.date %></td>
+                <td><%= group.time.to_s(:time) %></td>
                 <td><%= group.duration %></td>
                 <td><%= group.location %></td>
                 <td><%= group.capacity %></td>
-                <td><%= link_to 'Show', group %></td>
-                <td><%= link_to 'Edit', edit_group_path(group) %></td>
-                <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to 'Show', group %>
+                <%= link_to 'Edit', edit_group_path(group) %>
+                <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
         <% end %>
     </tbody>
