@@ -60,7 +60,7 @@ for noteData in notes do
                         course: noteData["course"],
                         prof: noteData["prof"],
                         content: noteData["content"],
-                        user_id: [*1..50].sample
+                        user_id: [*1..33].sample
                         )
                         
     for attachment in noteData["attachments"] do
@@ -111,7 +111,7 @@ end
                   content: ["looking for someone doing masters","call me at 4164084758 for inquiries","Finishing project","Writing lab report","Studying for the final","Problem set 4"].sample,
                   limit: [1,2,3,4,0].sample,
                   price: [*1..50].sample,
-                  user_id: [*1..50].sample
+                  user_id: [*1..33].sample
                   )
 end
 
@@ -125,6 +125,6 @@ end
                   duration: [1,2,3,4].sample,
                   location: ["Bahen","Sanford Fleming","Galbraith","Victoria College"].sample,
                   capacity: [1,2,3,4,0].sample,
-                  user_id: [*1..50].sample
+                  user_id: [*1..33].sample
                   )
 end
