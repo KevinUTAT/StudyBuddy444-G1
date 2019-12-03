@@ -1,3 +1,5 @@
+</br>
+
 <h1>Explore Study Groups</h1>
 <p>These are study groups that you are not a part of. Join any that interest you!</p>
 
@@ -8,21 +10,22 @@
 <% end %>
 
 </br>
-<%= link_to "Create a new study group", { :action => "new" }, class:"btn btn-outline-success my-2 my-sm-0" %>
+<%= link_to "Create a new study group", { :action => "new" }, class:"btn btn-secondary" %>
 </br>
 </br>
-<table>
-    <tr>
-        <th>Lead</th>
-        <th>Course</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Duration (hours)</th>
-        <th>Location</th>
-        <th>Capacity</th>
-    </tr>
-
+<table class="table">
+    <thead class="thead-dark">
+        <th scope="col"><h4>Lead</h4></th>
+        <th scope="col"><h4>Course</h4></th>
+        <th scope="col"><h4>Description</h4></th>
+        <th scope="col"><h4>Date</h4></th>
+        <th scope="col"><h4>Time</h4></th>
+        <th scope="col"><h4>Duration (hrs)</h4></th>
+        <th scope="col"><h4>Location</h4></th>
+        <th scope="col"><h4>Capacity</h4></th>
+        <th scope="col"><h4>Expand</h4></th>
+    </thead>
+    <tbody>
     <% @groups.each do |group| %>
         <tr>
             <td><%= group.user.page.name %></td>
@@ -35,6 +38,7 @@
             <td><%= group.capacity %></td>
             <td><%= link_to 'Show', controller: "groups", action: "show", id: group %></td>
         </tr>
+    </tbody>
     <% end %>
 
 </table>

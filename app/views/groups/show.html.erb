@@ -1,70 +1,82 @@
+</br>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Course:</strong>
-  <%= @group.category %>
-</p>
+<div id="groups">
+  <h4>
+    <strong>Course:</strong>
+    <%= @group.category %>
+  </h4>
 
-<p>
-  <strong>Lead:</strong>
-  <li>
-  <%= @group.user.page.name %>
-  </li>
-</p>
+  <h4>
+    <strong>Lead:</strong>
+    <li>
+    <%= @group.user.page.name %>
+    </li>
+  </h4>
 
-<p>
-  <strong>Study Group Members:</strong>
-  <% @members.each do |member| %>
-    <% if member.group_id == @group.id %>
-      <li>
-        <%= @users.find(member.user_id).page.name%>
-      </li>
+  <h4>
+    <strong>Study Group Members:</strong>
+    <% @members.each do |member| %>
+      <% if member.group_id == @group.id %>
+        <li>
+          <%= @users.find(member.user_id).page.name%>
+        </li>
+      <% end %>
+    <% end %>
+  </h4>
+
+  <h4>
+    <strong>Description:</strong>
+    <%= @group.description %>
+  </h4>
+
+  <h4>
+    <strong>Date:</strong>
+    <%= @group.date %>
+  </h4>
+
+  <h4>
+    <strong>Time:</strong>
+    <%= @group.time.to_s(:time) %>
+  </h4>
+
+  <h4>
+    <strong>Duration:</strong>
+    <%= @group.duration %> hours
+  </h4>
+
+  <h4>
+    <strong>Location:</strong>
+    <%= @group.location %>
+  </p>
+
+  <h4>
+    <strong>Number of buddies needed:</strong>
+    <%= @group.capacity %>
+  </h4>
+
+  <% if current_user.id != @group.user_id %>
+    <% if (!Member.exists?(user_id: current_user.id, group_id: @group.id)) %>
+      <%= button_to "Join Study Group", {:action => "join", :group_id => @group.id}, :method => :post %>
+    <% else %>
+      <%= button_to "Leave Study Group", {:action => "unjoin", :group_id => @group.id}, :method => :post %>
     <% end %>
   <% end %>
-</p>
+  </br>
 
-<p>
-  <strong>Description:</strong>
-  <%= @group.description %>
-</p>
+  <%= button_to "Explore Study Groups", { :action => "index" }, :method => :get %>
 
-<p>
-  <strong>Date:</strong>
-  <%= @group.date %>
-</p>
+  <% if @group.user_id == current_user.id%>
+      <%= link_to 'Edit', edit_group_path(@group) %> |
+      <%= link_to 'Destroy', @group, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%end%>
+</div>
 
-<p>
-  <strong>Time:</strong>
-  <%= @group.time.to_s(:time) %>
-</p>
+<br/>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @group.duration %> hours
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @group.location %>
-</p>
-
-<p>
-  <strong>Number of buddies needed:</strong>
-  <%= @group.capacity %>
-</p>
-
-<% if current_user.id != @group.user_id %>
-  <% if (!Member.exists?(user_id: current_user.id, group_id: @group.id)) %>
-    <%= button_to "Join Study Group", {:action => "join", :group_id => @group.id}, :method => :post %>
-  <% else %>
-    <%= button_to "Leave Study Group", {:action => "unjoin", :group_id => @group.id}, :method => :post %>
-  <% end %>
-<% end %>
-
-<%= button_to "Explore Study Groups", { :action => "index" }, :method => :get %>
-
-<% if @group.user_id == current_user.id%>
-    <%= link_to 'Edit', edit_group_path(@group) %> |
-    <%= link_to 'Destroy', @group, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%end%>
-<%= link_to 'Back to Dashboard', dashboard_index_path %>
+<div id="groups">
+    <%= render "comments/show" %>
+    <br/>
+    <%= render "comments/comment" %>
+</div>
