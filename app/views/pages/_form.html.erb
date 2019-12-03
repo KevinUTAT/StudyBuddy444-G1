@@ -1,56 +1,74 @@
 <%= form_with(model: page, local: true) do |form| %>
   <% if page.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
+      <div id="error_explanation">
+          <h2><%= pluralize(page.errors.count, "error") %> prohibited this page from being saved:</h2>
 
-      <ul>
-        <% page.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+              <% page.errors.full_messages.each do |message| %>
+                  <li>
+                      <%= message %>
+                  </li>
+                  <% end %>
+          </ul>
+      </div>
+      <% end %>
 
-  <div class="field">
-    <%= form.label "Name *" %>
-    <%= form.text_field :name %>
-  </div>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-3">
+                      <div class="text-center">
 
-  <p>
-    <%= form.label "Profile Photo" %>
-    <%= profile_picture(@page)%>
-    <%= form.label "Upload Photo" %>
-    <%= form.file_field :avatar %>
-  </p>
+                          <%= form.label "Profile Photo" %>
+                              <%= profile_picture(@page)%>
+                                  <%= form.label "Upload Photo" %>
+                                      <%= form.file_field :avatar %>
+                      </div>
+                  </div>
 
-  <div class="field">
-    <%= form.label :about_me %>
-    <%= form.text_area :about_me %>
-  </div>
-
-  <p>
-    <% if @page.resume.attached? %>
-        <%= form.label "Resume" %>
-        <%= link_to "My Resume", rails_blob_path(@page.resume, disposition: 'preview') %>
-        <%= link_to "Remove", controller: "pages", action: "delete_resume", id: @page.id %>
-    <%else%>
-        <%= form.label "Upload Resume" %>
-        <%= form.file_field :resume %>
-    <%end%> 
-  </p>
-
-  <p>
-    <% if @page.transcript.attached? %>
-        <%= form.label "Transcript" %>
-        <%= link_to "My Transcript", rails_blob_path(@page.transcript, disposition: 'preview') %>
-        <%= link_to "Remove", controller: "pages", action: "delete_transcript", id: @page.id %>
-    <%else%>
-        <%= form.label "Upload Transcript" %>
-        <%= form.file_field :transcript %>
-    <%end%> 
-  </p>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+                  <div class="col-md-9 personal-info">
+                      <h3>Personal info</h3>
+                      <form class="form-horizontal" role="form">
+                          <div class="form-group">
+                              <label class="col-lg-3 control-label">Name*</label>
+                              <div class="col-lg-8">
+                                  <%= form.text_field :name, class:"form-control" %>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-lg-3 control-label">About me:</label>
+                              <div class="col-lg-8">
+                                  <%= form.text_area :about_me, class: "form-control" %>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-lg-3 control-label">Resume:</label>
+                              <div class="col-lg-8 control-label">
+                                  <% if @page.resume.attached? %>
+                                      <%= link_to "My Resume", rails_blob_path(@page.resume, disposition: 'preview') %>
+                                      <%= link_to "Remove", controller: "pages", action: "delete_resume", id: @page.id %>
+                                  <%else%>
+                                      <%= form.file_field :resume %>
+                                  <%end%>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-lg-3 control-label">Transcript:</label>
+                              <div class="col-lg-8 control-label">
+                                  <% if @page.transcript.attached? %>
+                                      <%= link_to "My Transcript", rails_blob_path(@page.transcript, disposition: 'preview') %>
+                                      <%= link_to "Remove", controller: "pages", action: "delete_transcript", id: @page.id %>
+                                  <%else%>
+                                      <%= form.file_field :transcript, class: "btn btn-primary" %>
+                                  <%end%>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-md-8 ">
+                                  <%= form.submit "Save", class: "btn btn-success" %>
+                              </div>
+                          </div>
+                      </form>
+                    </div>
+                  <% end %>
+              </div>
+          </div>
