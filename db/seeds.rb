@@ -94,6 +94,19 @@ for noteData in notes do
         end
     end
 end
+
+
+
+50.times do
+    Post.create!(
+                  title: ["ECE444 tutor", "CSC411 hw help", "ECO250 lecture note taker", "SPA100 tutor", "PHY294 tutor"].sample,
+                  content: ["looking for someone doing masters","call me at 4164084758 for inquiries","Finishing project","Writing lab report","Studying for the final","Problem set 4"].sample,
+                  limit: [1,2,3,4,0].sample,
+                  price: [*1..50].sample,
+                  user_id: [*1..50].sample
+                  )
+end
+
                         
 50.times do
     Group.create!(

@@ -13,7 +13,9 @@ class Page < ApplicationRecord
             if search == ""
                 self.all
             else
-                self.all.where("lower(name) LIKE ?", "%#{search.downcase}%")
+                people = self.all.where("lower(name) LIKE ?", "%#{search.downcase}%")
+                descriptions = self.all.where("lower(about_me) LIKE ?", "%#{search.downcase}%")
+                return people + descriptions
             end
         else
             self.all

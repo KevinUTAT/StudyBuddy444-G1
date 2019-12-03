@@ -16,7 +16,7 @@
 #
 default: &default
   host: localhost
-  user: super_user
+  adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling

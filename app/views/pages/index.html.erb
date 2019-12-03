@@ -9,21 +9,33 @@
 </form>
 <br/>
 
-<table>
-  <tbody>
-    <% @pages.each do |page| %>
-      <%next if current_user.id == page.user_id %>
-      <tr colspan="3">
-          <td><%=profile_picture(page)%></td>
-          <td>
-              <h2><%= page.name %></h2>
-              <h7><%= link_to 'View Profile', page %></h7> |
-              <h7><%= link_to 'Contact' %></h7> |
-              <h7><%= link_to page.user.email %></h7>
-              <p><%= page.about_me %></p>
-          </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+  <h2>Buddies: </h2>
+
+<% @pages.each do |page| %>
+  <%next  if current_user.id == page.user_id %>
+  <div class="container-fluid" style="width: 99vw; margin-top:100px;">
+      <div class="row justify-content-center">
+          <div class="col-12 text-center">
+              <div class="card" style="border-radius:5px;">
+                  <div class="avatar">
+                      <td class="img-avatar"><%=profile_picture(@page)%></td>
+                  </div>
+                  <div class="card-body">
+                      <h1 style="color:#3c4858;"><%= @page.name %></h1>
+                      <p><%= @page.user.email%></p>
+                      <p><%= @page.about_me %></p>
+                      <a href="#" class="btn btn-primary">Invite</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+<% end %>
+
+
+
+
+
+
 

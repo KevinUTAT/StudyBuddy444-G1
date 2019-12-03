@@ -1,8 +1,10 @@
-<h1>Updating Profile</h1>
+<h1 class="text-center">Updating Profile</h1>
 
 <%= render 'form', page: @page %>
 
 
 
-<%= link_to 'Cancel Update', @page %> 
+<div class="text-center">
+<%= link_to 'Cancel', @page, class: "btn btn-danger " %> 
 <%# link_to 'Back', pages_path %>
+</div>
