@@ -13,27 +13,34 @@
                     <h1 style="color:#3c4858;"><%= @page.name %></h1>
                     <p><%= @page.user.email%></p>
                     <p><%= @page.about_me %></p>
-                    <a href="#" class="btn btn-primary">Invite</a>
+                    <p>
+                    <%if current_user.id != @page.user_id %>
+                        <a href="#" class="btn btn-primary">Invite</a>
+                    <%end%>
+                    </p>
+                
+                    <p>
+                    <% if @page.resume.attached? %>
+                        <%= link_to "View Resume", rails_blob_path(@page.resume, disposition: 'preview') , class: "btn btn-rose" %> 
+                    <%end%>
+                    <% if @page.transcript.attached? %>
+                        <%= link_to "View Transcript", rails_blob_path(@page.transcript, disposition: 'preview'), class: "btn btn-rose" %>
+                    <%end%>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<p>
-   <% if @page.resume.attached? %>
-      <%= link_to "View Resume", rails_blob_path(@page.resume, disposition: 'preview') %> |
-   <%end%>
-   <% if @page.transcript.attached? %>
-      <%= link_to "View Transcript", rails_blob_path(@page.transcript, disposition: 'preview') %>
-   <%end%>
-</p>
 
+<h1 style="margin-top:7vh;">
 <%if current_user.id == @page.user_id %>
-  <%=link_to 'Edit', edit_page_path(@page) %> 
+  <%= link_to 'Edit', edit_page_path(@page), class:"btn btn-primary" %> 
 <%else%>
-  <%= link_to 'Back', :back %>
+  <%= link_to 'Back', :back , class:"btn btn-primary"  %>
 <%end%>
+</h1>
 
 
 <h1 style="margin-top:7vh;"><%= @page.name %>'s notes</h1>
