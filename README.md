@@ -5,24 +5,26 @@ This is a web app that can be used to find study group on campus.
 
 The application is implimented using Ruby on Rails
 
+Heroku can be found here: http://studybuddyg1.herokuapp.com/
+
 # Work breakdown
-Profiles - Jamie
-Notes - Charlie
-Groups - Ahmed
-Buddies - Alireza
-Payments - Kevin
-Dashboard - All
-Home - All
-UI - All
+- Profiles - Jamie
+- Notes - Charlie
+- Groups - Ahmed
+- Buddies - Alireza
+- Payments - Kevin
+- Dashboard - All
+- Home - All
+- UI - All
 
 # Testing strategy
-Manually tested each function the moment it is completed by observing if it is acting in the correct way (correct inputs, outputs, behaviour)
-Continuous Testing - each time new features where implemented, multiple members would test in our own environments
-Automated tests such would have been nice
+- Manually tested each function the moment it is completed by observing if it is acting in the correct way (correct inputs, outputs, behaviour)
+- Continuous Testing - each time new features where implemented, multiple members would test in our own environments
+- Automated tests such would have been nice
 
 # Development Strategy
-Behaviour-Driven Development
-Created user stories of what we want to achieve, then figure out how to implement it technically
+- Behaviour-Driven Development
+- Created user stories of what we want to achieve, then figure out how to implement it technically
 
 # Easy, interesting and difficult features
 What we found easy or interesting
@@ -67,4 +69,4 @@ open up terminal
 # Forgot Password
 
 Unfortunately, because the sendgrid password and username where commited to the github repo, the sendgrid account has been suspended. Prior to this, the emails containing the password reset token were being sent and the user was able to reset their password if they forgot it. An image has been uploaded to the repo to demonstrate the working functionality.
-https://github.com/KevinUTAT/StudyBuddy444-G1/blob/master/FORGOT%20PASSWORD%20WORKS.png
+ 
