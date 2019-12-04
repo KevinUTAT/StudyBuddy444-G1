@@ -63,3 +63,8 @@ open up terminal
  1. $ rails c
  2. $ User.all
  
+ 
+# Forgot Password
+
+Unfortunately, because the sendgrid password and username where commited to the github repo, the sendgrid account has been suspended. Prior to this, the emails containing the password reset token were being sent and the user was able to reset their password if they forgot it. 
+ 
