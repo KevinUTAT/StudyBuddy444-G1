@@ -5,30 +5,34 @@ This is a web app that can be used to find study group on campus.
 
 The application is implimented using Ruby on Rails
 
-# Change log
-v 0.0.0 Welcome page and controller (pair programming - group)
+# Work breakdown
+Profiles - Jamie
+Notes - Charlie
+Groups - Ahmed
+Buddies - Alireza
+Payments - Kevin
+Dashboard - All
+Home - All
+UI - All
 
-v 0.0.1 Added user sign up and authentication with devise gem (Jamie)
+# Testing strategy
+Manually tested each function the moment it is completed by observing if it is acting in the correct way (correct inputs, outputs, behaviour)
+Continuous Testing - each time new features where implemented, multiple members would test in our own environments
+Automated tests such would have been nice
 
-v 1.0.0 Added MVC for users to create new posts (pair programming - Charlie/Alireza)
+# Development Strategy
+Behaviour-Driven Development
+Created user stories of what we want to achieve, then figure out how to implement it technically
 
-v 1.0.1 Updated design for posts: allows users to see all posts and the user that posted (pair programming - group)
+# Easy, interesting and difficult features
+What we found easy or interesting
+1. Gems provide lots of additional functionalities
+2. Seeding data was a quick way to breathe life into application
+3. MVC structure was a very neat way of organizing code and dividing responsibility
 
-v 1.0.2 Add an about page (Ahmed)
-
-# To Do
-
-1. Add functionality for users to add resources to posts
-
-2. Add functionality to allow multiple users to join and update posts
-
-3. Add functionality for note sessions and repository
-
-4. Create dashboard for users to view own sessions and notes
-
-5. Add system for payment of services between users 
-
-6. Add Registration Page
+What we found difficult
+1. Integrating custom front end within the rails framework
+2. Dealing with attachments and other external files - especially in seeding
 
 # Steps to follow after cloning
 
