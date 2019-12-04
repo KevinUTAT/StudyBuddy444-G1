@@ -8,7 +8,7 @@ The application is implimented using Ruby on Rails
 Heroku can be found here: http://studybuddyg1.herokuapp.com/
 
 # Work breakdown
-- Profiles - Jamie
+- Profiles/Users Registration - Jamie
 - Notes - Charlie
 - Groups - Ahmed
 - Buddies - Alireza
