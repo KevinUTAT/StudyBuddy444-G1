@@ -66,5 +66,5 @@ open up terminal
  
 # Forgot Password
 
-Unfortunately, because the sendgrid password and username where commited to the github repo, the sendgrid account has been suspended. Prior to this, the emails containing the password reset token were being sent and the user was able to reset their password if they forgot it. 
+Unfortunately, because the sendgrid password and username where commited to the github repo, the sendgrid account has been suspended. Prior to this, the emails containing the password reset token were being sent and the user was able to reset their password if they forgot it. An image has been uploaded to the repo to demonstrate the working functionality.
  
